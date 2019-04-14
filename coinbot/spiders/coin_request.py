@@ -3,7 +3,6 @@ import os
 import time
 import datetime
 
-
 class CoinRequestSpider(scrapy.Spider):
     name = "coin_request"
     custom_settings = {
@@ -14,10 +13,10 @@ class CoinRequestSpider(scrapy.Spider):
   #Parse links to currency pages
     def parse(self, response):
         #Create SelectorList of links
-        links = response.css('a.currency-name-cointainer link-secondary::attr(href)').extract()
+        links = response.css('a.currency-name-container::attr(href)').extract()
         date_range_string = 'historical-data/?start=20130409&end=20190409'
-        for link in links:
-            table_link = link + date_range_string #To do: replace with date_range_string
+        for link in reversed(links):
+            table_link = link + date_range_string 
             yield response.follow(url = table_link, callback = self.parse_pages)
     
     #Parse currency historical data

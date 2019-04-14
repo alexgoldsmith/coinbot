@@ -5,7 +5,7 @@ from coinbot.items import CoinItem
 
 class CoinParseSpider(scrapy.Spider):
     name = "coin_parse"
-     custom_settings = {
+    custom_settings = {
         'CONCURRENT_REQUESTS' : '100',
     }
 

@@ -6,7 +6,7 @@
 <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BV1dWDxACVVZTAAUEUVI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"6d0ece54b7","agent":"","transactionName":"NFBbY0VUXEEEARUPXg0af0JZVkZbCgxOBV4KW1RWRV5XRgYDEUhHClBORBlBQFMLEQ0HRQZRA1RCR0BXCwEYOVUGQVheWw==","applicationID":"217174376","errorBeacon":"bam.nr-data.net","applicationTime":449}</script>
+<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BV1dWDxACVVZTAAUEUVI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"6d0ece54b7","agent":"","transactionName":"NFBbY0VUXEEEARUPXg0af0JZVkZbCgxOBV4KW1RWRV5XRgYDEUhHClBORBlBQFMLEQ0HRQZRA1RCR0BXCwEYOVUGQVheWw==","applicationID":"217174376","errorBeacon":"bam.nr-data.net","applicationTime":298}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Storjcoin X (SJCX) Historical Data | CoinMarketCap</title>
 <link rel="preload" as="font" href="https://s2.coinmarketcap.com/static/cloud/fonts/glyphicons-regular.woff2" type="font/woff2" crossorigin>
@@ -42,7 +42,7 @@
 <link rel="alternate" href="https://coinmarketcap.com/zh/currencies/storjcoin-x/historical-data/?start=20130409&amp;end=20190409" hreflang="zh">
 <link rel="alternate" href="https://coinmarketcap.com/zh-tw/currencies/storjcoin-x/historical-data/?start=20130409&amp;end=20190409" hreflang="zh-tw">
 <meta name="apple-itunes-app" content="app-id=1282107098">
-<link href="https://s2.coinmarketcap.com/static/cloud/compressed/base.7bd93e16.min.css" rel='stylesheet'>
+<link href="https://s2.coinmarketcap.com/static/cloud/compressed/base.9e6af56d.min.css" rel='stylesheet'>
 <link href="https://s2.coinmarketcap.com/static/cloud/compressed/historical_data.3acb0e01.min.css" rel='stylesheet'>
 <style>
         .daterangepicker .calendar {
@@ -655,7 +655,7 @@
             
                 "offers": {
                     "@type": "Offer",
-                    "price": "0.138546",
+                    "price": "0.126848",
                     "priceCurrency": "USD"
                 }
             
@@ -670,7 +670,7 @@
         };
         
             var addthis_share = {
-                title: "The price of Storjcoin X is $0.138546!"
+                title: "The price of Storjcoin X is $0.126848!"
             };
         
     </script>
@@ -828,7 +828,7 @@ BTC Dominance:&nbsp;
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="HUF">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-hu">
-</span>
+ </span>
 <span>HUF</span>
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="IDR">
@@ -847,7 +847,7 @@ BTC Dominance:&nbsp;
 <span>INR</span>
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="JPY">
- <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-jp">
+<span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-jp">
 </span>
 <span>JPY</span>
 </li>
@@ -911,7 +911,7 @@ BTC Dominance:&nbsp;
 </span>
 <span>THB</span>
 </li>
- <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="TRY">
+<li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="TRY">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-tr">
 </span>
 <span>TRY</span>
@@ -1203,7 +1203,7 @@ BTC Dominance:&nbsp;
 <div class="cmc-nav-mobile-submenu-takeover cmc-nav-mobile-submenu-enter js-nav-mobile-submenu-takeover">
 <div class="cmc-nav-mobile-submenu__header">
 <button class="u-button-reset cmc-nav-mobile-submenu__back-button js-nav-mobile-submenu__back-button">
-<span class="icon-angle-left"></span> Back to Main Menu
+ <span class="icon-angle-left"></span> Back to Main Menu
 </button>
 <button class="u-button-reset cmc-nav-mobile-close js-nav-mobile-submenu-closer" title="Exit the navigation menu">
 <span class="cmc-nav-mobile-close-icon icon-times"></span>
@@ -1267,7 +1267,7 @@ Tools
 <p class="cmc-nav-mobile-desc">Convert prices of thousands of crypto and fiat currencies</p>
 </a>
 </div>
-<div class="cmc-nav-mobile-submenu__item">
+ <div class="cmc-nav-mobile-submenu__item">
 <a class="cmc-nav-link--menuitem" href="/historical/">
 <h6 class="cmc-nav-mobile-heading cmc-nav-link--menuitem__arrow">Historical Snapshots</h6>
 <p class="cmc-nav-mobile-desc">View crypto rankings from the past</p>
@@ -1323,6 +1323,12 @@ Resources
 </a>
 </div>
 <div class="cmc-nav-mobile-submenu__item">
+<a class="cmc-nav-link--menuitem" href="/indices/">
+<h6 class="cmc-nav-mobile-heading cmc-nav-link--menuitem__arrow">Crypto Indices</h6>
+<p class="cmc-nav-mobile-desc">The most comprehensive suite of institutional grade indices in the market</p>
+</a>
+</div>
+ <div class="cmc-nav-mobile-submenu__item">
 <a class="cmc-nav-link--menuitem" href="/glossary/">
 <h6 class="cmc-nav-mobile-heading cmc-nav-link--menuitem__arrow">Crypto Glossary</h6>
 <p class="cmc-nav-mobile-desc">Learn the terms, slang and definitions around the crypto space</p>
@@ -1488,7 +1494,7 @@ Markets:&nbsp;
 </div>
 <div class="w-100">
 <div class="cmc-navsubmenu__item">
- <h6 class="cmc-nav-heading">Cryptocurrencies</h6>
+<h6 class="cmc-nav-heading">Cryptocurrencies</h6>
 <ul class="cmc-nav-menu-list">
 <li><a class="cmc-nav-link cmc-nav-link--arrow" href="/currencies/volume/24-hour/">Daily Volume</a></li>
 <li><a class="cmc-nav-link cmc-nav-link--arrow" href="/currencies/volume/monthly/">Monthly Volume</a></li>
@@ -1578,6 +1584,12 @@ Markets:&nbsp;
 <a class="cmc-nav-link--menuitem" href="/events/">
 <h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">Events Calendar</h6>
 <p class="cmc-nav-desc">A full list of crypto &amp; blockchain events from around the world</p>
+</a>
+</div>
+<div class="cmc-navsubmenu__item">
+<a class="cmc-nav-link--menuitem" href="/indices/">
+<h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">Crypto Indices</h6>
+<p class="cmc-nav-desc">The most comprehensive suite of institutional grade indices in the market</p>
 </a>
 </div>
 <div class="cmc-navsubmenu__item">
@@ -1679,32 +1691,33 @@ Storjcoin X
 <span class="text-bold h3 text-gray text-large">(SJCX)</span>
 </div>
 <div class="details-panel-item--price bottom-margin-1x">
-<span id="quote_price" data-currency-price data-usd="0.138546036864">
-<span class="h2 text-semi-bold details-panel-item--price__value" data-currency-value>0.138546</span>
+<span id="quote_price" data-currency-price data-usd="0.126847578665">
+<span class="h2 text-semi-bold details-panel-item--price__value" data-currency-value>0.126848</span>
 <span class="text-large" data-currency-code>USD</span>
 </span>
 <span class="h2 text-semi-bold positive_change ">
-(<span data-format-percentage data-format-value="0.260315">0.26</span>%)
+(<span data-format-percentage data-format-value="0.00872807">0.01</span>%)
 </span>
 <br>
 <span class="text-gray">
-<span data-format-price-crypto data-format-value="2.6707270601e-05">
-0.00002671
+<span data-format-price-crypto data-format-value="2.49938515801e-05">
+0.00002499
 </span>
 BTC
 </span>
+
 <span class=" positive_change ">
-(<span data-format-percentage data-format-value="1.62134">1.62</span>%)
+(<span data-format-percentage data-format-value="0.341436">0.34</span>%)
 </span>
 <br>
 <span class="text-gray">
-<span data-format-price-crypto data-format-value="0.0530309060524">
-0.05303091
+<span data-format-price-crypto data-format-value="0.0655691102797">
+0.06556911
 </span>
 XCP
 </span>
 <span class=" positive_change ">
-(<span data-format-percentage data-format-value="3.40288">3.40</span>%)
+(<span data-format-percentage data-format-value="2.24261">2.24</span>%)
 </span>
 <div class="toolbar-buttons">
 <div>
@@ -1718,7 +1731,7 @@ Share
 <span class="glyphicons glyphicons-star"></span>
 <span class="js-watchlist-star-label"></span>
 </span>
- </div>
+</div>
 </div>
 </div>
 <div class="details-panel-item--buy-buttons margin-bottom--lv3">
@@ -1762,7 +1775,7 @@ Crypto.com
 </ul>
 </div>
 <div class="hide js-buy-button-content-exchange">
- <h4>Exchange</h4>
+<h4>Exchange</h4>
 <ul class="list-unstyled">
 <li>
 <img src="https://s2.coinmarketcap.com/static/cloud/img/coinall_32x32_1.png" width="16" alt="CoinAll.com" />
@@ -1837,20 +1850,20 @@ XCP
 <div class="coin-summary-item">
 <h5 class="coin-summary-item-header">Volume (24h)</h5>
 <div class="coin-summary-item-detail">
-<span data-currency-volume data-usd="13.8546036864">
-<span data-currency-value>14</span>
+<span data-currency-volume data-usd="?">
+<span data-currency-value>?</span>
 <span data-currency-code>USD</span>
 </span><br>
 <span class="text-gray">
-<span data-format-volume-crypto data-format-value="0.0026707270601">
-0.00
+<span data-format-volume-crypto data-format-value="?">
+?
 </span>
 BTC
 </span>
 <br>
 <span class="text-gray">
-<span data-format-volume-crypto data-format-value="5.30309060524">
-5.30
+<span data-format-volume-crypto data-format-value="?">
+?
 </span>
 XCP
 </span>
@@ -1886,7 +1899,7 @@ SJCX
 </div>
 <ul class="list-unstyled details-panel-item--links">
 <li><span class="glyphicons glyphicons-charts details-list-item-icon" title="Rank"></span>
-<span class="label label-success"> Rank 2085</span>
+<span class="label label-success"> Rank 2163</span>
 </li>
 <li><span class="glyphicons glyphicons-link details-list-item-icon" title="Website"></span> <a href="http://storj.io" target="_blank" rel="noopener">Website</a></li>
 <li><span class="glyphicons glyphicons-search details-list-item-icon" title="Explorer"></span> <a href="https://xchain.io/asset/SJCX" target="_blank" rel="noopener">Explorer</a></li>
@@ -2172,7 +2185,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 15, 2019</td>
-<td data-format-fiat data-format-value="0.138667240381">0.138667</td>
+ <td data-format-fiat data-format-value="0.138667240381">0.138667</td>
 <td data-format-fiat data-format-value="0.13910629972">0.139106</td>
 <td data-format-fiat data-format-value="0.12528277911">0.125283</td>
 <td data-format-fiat data-format-value="0.13910629972">0.139106</td>
@@ -2223,7 +2236,7 @@ SJCX
 <td data-format-fiat data-format-value="0.117038083964">0.117038</td>
 <td data-format-market-cap data-format-value="67.1447487701">67</td>
 <td data-format-market-cap data-format-value="-">-</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Mar 09, 2019</td>
 <td data-format-fiat data-format-value="0.139415283587">0.139415</td>
@@ -2496,7 +2509,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 07, 2019</td>
- <td data-format-fiat data-format-value="0.103694432519">0.103694</td>
+<td data-format-fiat data-format-value="0.103694432519">0.103694</td>
 <td data-format-fiat data-format-value="0.105721875845">0.105722</td>
 <td data-format-fiat data-format-value="0.0953953569717">0.095395</td>
 <td data-format-fiat data-format-value="0.105591428708">0.105591</td>
@@ -2547,7 +2560,7 @@ SJCX
 <td data-format-fiat data-format-value="0.100461348119">0.100461</td>
 <td data-format-market-cap data-format-value="5.23403623701">5</td>
 <td data-format-market-cap data-format-value="-">-</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Feb 01, 2019</td>
 <td data-format-fiat data-format-value="0.0960393272585">0.096039</td>
@@ -2651,7 +2664,7 @@ SJCX
 <td class="text-left">Jan 21, 2019</td>
 <td data-format-fiat data-format-value="0.107625093489">0.107625</td>
 <td data-format-fiat data-format-value="0.107786038047">0.107786</td>
- <td data-format-fiat data-format-value="0.100389118375">0.100389</td>
+<td data-format-fiat data-format-value="0.100389118375">0.100389</td>
 <td data-format-fiat data-format-value="0.107588363749">0.107588</td>
 <td data-format-market-cap data-format-value="12.770738777">13</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -2741,7 +2754,7 @@ SJCX
 <td class="text-left">Jan 11, 2019</td>
 <td data-format-fiat data-format-value="0.101562445901">0.101562</td>
 <td data-format-fiat data-format-value="0.109105542743">0.109106</td>
-<td data-format-fiat data-format-value="0.10146181517">0.101462</td>
+ <td data-format-fiat data-format-value="0.10146181517">0.101462</td>
 <td data-format-fiat data-format-value="0.108762777322">0.108763</td>
 <td data-format-market-cap data-format-value="0.0108762777322">0</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -2754,7 +2767,7 @@ SJCX
 <td data-format-fiat data-format-value="0.101565806175">0.101566</td>
 <td data-format-market-cap data-format-value="15.2450275069">15</td>
 <td data-format-market-cap data-format-value="-">-</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jan 09, 2019</td>
 <td data-format-fiat data-format-value="0.109416505892">0.109417</td>
@@ -2844,7 +2857,7 @@ SJCX
 <td data-format-fiat data-format-value="0.107613741633">0.107614</td>
 <td data-format-market-cap data-format-value="319.042459819">319</td>
 <td data-format-market-cap data-format-value="-">-</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Dec 30, 2018</td>
 <td data-format-fiat data-format-value="0.106989798232">0.106990</td>
@@ -2896,7 +2909,7 @@ SJCX
 <td data-format-fiat data-format-value="0.105881280937">0.105881</td>
 <td data-format-fiat data-format-value="0.105501489258">0.105501</td>
 <td data-format-fiat data-format-value="0.105519438614">0.105519</td>
-<td data-format-market-cap data-format-value="2.95454428118">3</td>
+ <td data-format-market-cap data-format-value="2.95454428118">3</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
@@ -2948,7 +2961,7 @@ SJCX
 <td class="text-left">Dec 19, 2018</td>
 <td data-format-fiat data-format-value="0.102860189731">0.102860</td>
 <td data-format-fiat data-format-value="0.103247876971">0.103248</td>
-<td data-format-fiat data-format-value="0.0979009045492">0.097901</td>
+ <td data-format-fiat data-format-value="0.0979009045492">0.097901</td>
 <td data-format-fiat data-format-value="0.102966550732">0.102967</td>
 <td data-format-market-cap data-format-value="26.8433797757">27</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -2962,7 +2975,6 @@ SJCX
 <td data-format-market-cap data-format-value="2.057085451">2</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Dec 17, 2018</td>
 <td data-format-fiat data-format-value="0.102070078438">0.102070</td>
@@ -3052,7 +3064,7 @@ SJCX
 <td data-format-fiat data-format-value="0.109105445711">0.109105</td>
 <td data-format-market-cap data-format-value="43.5330728387">44</td>
 <td data-format-market-cap data-format-value="-">-</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Dec 07, 2018</td>
 <td data-format-fiat data-format-value="0.106500998447">0.106501</td>
@@ -3104,7 +3116,7 @@ SJCX
 <td data-format-fiat data-format-value="0.138934875791">0.138935</td>
 <td data-format-fiat data-format-value="0.138520120663">0.138520</td>
 <td data-format-fiat data-format-value="0.138641099359">0.138641</td>
-<td data-format-market-cap data-format-value="0.0693205496795">0</td>
+ <td data-format-market-cap data-format-value="0.0693205496795">0</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
@@ -3157,7 +3169,7 @@ SJCX
 <td data-format-fiat data-format-value="0.132842">0.132842</td>
 <td data-format-fiat data-format-value="0.132849">0.132849</td>
 <td data-format-fiat data-format-value="0.131983">0.131983</td>
-<td data-format-fiat data-format-value="0.132128">0.132128</td>
+ <td data-format-fiat data-format-value="0.132128">0.132128</td>
 <td data-format-market-cap data-format-value="0.132128">0</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -3172,7 +3184,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 24, 2018</td>
- <td data-format-fiat data-format-value="0.139795">0.139795</td>
+<td data-format-fiat data-format-value="0.139795">0.139795</td>
 <td data-format-fiat data-format-value="0.139795">0.139795</td>
 <td data-format-fiat data-format-value="0.139763">0.139763</td>
 <td data-format-fiat data-format-value="0.139763">0.139763</td>
@@ -3226,7 +3238,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 18, 2018</td>
- <td data-format-fiat data-format-value="0.124085">0.124085</td>
+<td data-format-fiat data-format-value="0.124085">0.124085</td>
 <td data-format-fiat data-format-value="0.124306">0.124306</td>
 <td data-format-fiat data-format-value="0.124057">0.124057</td>
 <td data-format-fiat data-format-value="0.124221">0.124221</td>
@@ -3319,7 +3331,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0924707">0.092471</td>
 <td data-format-fiat data-format-value="0.0924707">0.092471</td>
 <td data-format-fiat data-format-value="0.0920409">0.092041</td>
-<td data-format-fiat data-format-value="0.0921542">0.092154</td>
+ <td data-format-fiat data-format-value="0.0921542">0.092154</td>
 <td data-format-market-cap data-format-value="20.6978">21</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -3334,7 +3346,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 06, 2018</td>
- <td data-format-fiat data-format-value="0.0830062">0.083006</td>
+<td data-format-fiat data-format-value="0.0830062">0.083006</td>
 <td data-format-fiat data-format-value="0.0883937">0.088394</td>
 <td data-format-fiat data-format-value="0.0829528">0.082953</td>
 <td data-format-fiat data-format-value="0.0881861">0.088186</td>
@@ -3373,7 +3385,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0718505">0.071850</td>
 <td data-format-fiat data-format-value="0.0930683">0.093068</td>
 <td data-format-fiat data-format-value="0.0716186">0.071619</td>
-<td data-format-fiat data-format-value="0.0927517">0.092752</td>
+ <td data-format-fiat data-format-value="0.0927517">0.092752</td>
 <td data-format-market-cap data-format-value="73.3203">73</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -3589,7 +3601,7 @@ SJCX
 <td data-format-fiat data-format-value="0.236928">0.236928</td>
 <td data-format-fiat data-format-value="0.237342">0.237342</td>
 <td data-format-fiat data-format-value="0.23641">0.236410</td>
-<td data-format-fiat data-format-value="0.237131">0.237131</td>
+ <td data-format-fiat data-format-value="0.237131">0.237131</td>
 <td data-format-market-cap data-format-value="118.565">119</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -3643,7 +3655,7 @@ SJCX
 <td data-format-fiat data-format-value="0.237666">0.237666</td>
 <td data-format-fiat data-format-value="0.246383">0.246383</td>
 <td data-format-fiat data-format-value="0.235716">0.235716</td>
-<td data-format-fiat data-format-value="0.235771">0.235771</td>
+ <td data-format-fiat data-format-value="0.235771">0.235771</td>
 <td data-format-market-cap data-format-value="254.326">254</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -3697,7 +3709,7 @@ SJCX
 <td data-format-fiat data-format-value="0.265225">0.265225</td>
 <td data-format-fiat data-format-value="0.265576">0.265576</td>
 <td data-format-fiat data-format-value="0.246824">0.246824</td>
-<td data-format-fiat data-format-value="0.246971">0.246971</td>
+ <td data-format-fiat data-format-value="0.246971">0.246971</td>
 <td data-format-market-cap data-format-value="10.5457">11</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -3712,7 +3724,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 25, 2018</td>
- <td data-format-fiat data-format-value="0.26509">0.265090</td>
+<td data-format-fiat data-format-value="0.26509">0.265090</td>
 <td data-format-fiat data-format-value="0.265168">0.265168</td>
 <td data-format-fiat data-format-value="0.223022">0.223022</td>
 <td data-format-fiat data-format-value="0.223045">0.223045</td>
@@ -3766,7 +3778,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 19, 2018</td>
- <td data-format-fiat data-format-value="0.334787">0.334787</td>
+<td data-format-fiat data-format-value="0.334787">0.334787</td>
 <td data-format-fiat data-format-value="0.335108">0.335108</td>
 <td data-format-fiat data-format-value="0.286649">0.286649</td>
 <td data-format-fiat data-format-value="0.286697">0.286697</td>
@@ -4459,7 +4471,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 04, 2018</td>
- <td data-format-fiat data-format-value="0.655970990658">0.655971</td>
+<td data-format-fiat data-format-value="0.655970990658">0.655971</td>
 <td data-format-fiat data-format-value="0.660580992699">0.660581</td>
 <td data-format-fiat data-format-value="0.655970990658">0.655971</td>
 <td data-format-fiat data-format-value="0.660580992699">0.660581</td>
@@ -4666,7 +4678,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 11, 2018</td>
- <td data-format-fiat data-format-value="0.740292012691">0.740292</td>
+<td data-format-fiat data-format-value="0.740292012691">0.740292</td>
 <td data-format-fiat data-format-value="0.740292012691">0.740292</td>
 <td data-format-fiat data-format-value="0.736272990704">0.736273</td>
 <td data-format-fiat data-format-value="0.736272990704">0.736273</td>
@@ -4821,7 +4833,7 @@ SJCX
 <td class="text-left">May 25, 2018</td>
 <td data-format-fiat data-format-value="0.788935005665">0.788935</td>
 <td data-format-fiat data-format-value="0.876780986786">0.876781</td>
- <td data-format-fiat data-format-value="0.788935005665">0.788935</td>
+<td data-format-fiat data-format-value="0.788935005665">0.788935</td>
 <td data-format-fiat data-format-value="0.849862992764">0.849863</td>
 <td data-format-market-cap data-format-value="77.0826034546">77</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -4873,7 +4885,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">May 19, 2018</td>
- <td data-format-fiat data-format-value="0.758099019527">0.758099</td>
+<td data-format-fiat data-format-value="0.758099019527">0.758099</td>
 <td data-format-fiat data-format-value="0.83078199625">0.830782</td>
 <td data-format-fiat data-format-value="0.72200101614">0.722001</td>
 <td data-format-fiat data-format-value="0.83078199625">0.830782</td>
@@ -5169,7 +5181,7 @@ SJCX
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Apr 16, 2018</td>
+ <td class="text-left">Apr 16, 2018</td>
 <td data-format-fiat data-format-value="0.755980014801">0.755980</td>
 <td data-format-fiat data-format-value="0.779525995255">0.779526</td>
 <td data-format-fiat data-format-value="0.697403013706">0.697403</td>
@@ -5376,7 +5388,7 @@ SJCX
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Mar 24, 2018</td>
+ <td class="text-left">Mar 24, 2018</td>
 <td data-format-fiat data-format-value="0.773379981518">0.773380</td>
 <td data-format-fiat data-format-value="0.792475998402">0.792476</td>
 <td data-format-fiat data-format-value="0.764787018299">0.764787</td>
@@ -5427,7 +5439,7 @@ SJCX
 <td data-format-fiat data-format-value="0.753139019012">0.753139</td>
 <td data-format-fiat data-format-value="0.791649997234">0.791650</td>
 <td data-format-market-cap data-format-value="2741.90991211">2,742</td>
-<td data-format-market-cap data-format-value="-">-</td>
+ <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 18, 2018</td>
@@ -5479,7 +5491,7 @@ SJCX
 <td data-format-fiat data-format-value="0.902198016644">0.902198</td>
 <td data-format-fiat data-format-value="0.902198016644">0.902198</td>
 <td data-format-fiat data-format-value="0.848905980587">0.848906</td>
-<td data-format-fiat data-format-value="0.886951982975">0.886952</td>
+ <td data-format-fiat data-format-value="0.886951982975">0.886952</td>
 <td data-format-market-cap data-format-value="770.406005859">770</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -5531,7 +5543,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Mar 07, 2018</td>
 <td data-format-fiat data-format-value="1.02623999119">1.03</td>
-<td data-format-fiat data-format-value="1.02636003494">1.03</td>
+ <td data-format-fiat data-format-value="1.02636003494">1.03</td>
 <td data-format-fiat data-format-value="0.886883020401">0.886883</td>
 <td data-format-fiat data-format-value="0.899968028069">0.899968</td>
 <td data-format-market-cap data-format-value="1980.56994629">1,981</td>
@@ -5584,7 +5596,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 01, 2018</td>
-<td data-format-fiat data-format-value="1.07337999344">1.07</td>
+ <td data-format-fiat data-format-value="1.07337999344">1.07</td>
 <td data-format-fiat data-format-value="1.07337999344">1.07</td>
 <td data-format-fiat data-format-value="0.978770017624">0.978770</td>
 <td data-format-fiat data-format-value="1.03358995914">1.03</td>
@@ -5636,7 +5648,7 @@ SJCX
 <td data-format-market-cap data-format-value="2405.85009766">2,406</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Feb 23, 2018</td>
 <td data-format-fiat data-format-value="1.23318994045">1.23</td>
 <td data-format-fiat data-format-value="1.23318994045">1.23</td>
@@ -5809,7 +5821,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 04, 2018</td>
- <td data-format-fiat data-format-value="1.07035005093">1.07</td>
+<td data-format-fiat data-format-value="1.07035005093">1.07</td>
 <td data-format-fiat data-format-value="1.11022996902">1.11</td>
 <td data-format-fiat data-format-value="0.977025985718">0.977026</td>
 <td data-format-fiat data-format-value="1.01797997952">1.02</td>
@@ -5914,7 +5926,7 @@ SJCX
 <td data-format-fiat data-format-value="1.41637003422">1.42</td>
 <td data-format-market-cap data-format-value="1284.92004395">1,285</td>
 <td data-format-market-cap data-format-value="-">-</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jan 23, 2018</td>
 <td data-format-fiat data-format-value="1.52909004688">1.53</td>
@@ -5967,7 +5979,7 @@ SJCX
 <td data-format-fiat data-format-value="1.26577997208">1.27</td>
 <td data-format-fiat data-format-value="1.50092995167">1.50</td>
 <td data-format-market-cap data-format-value="7233.87988281">7,234</td>
- <td data-format-market-cap data-format-value="-">-</td>
+<td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 17, 2018</td>
@@ -6059,7 +6071,7 @@ SJCX
 <td data-format-market-cap data-format-value="101365.0">101,365</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Jan 07, 2018</td>
 <td data-format-fiat data-format-value="1.60693001747">1.61</td>
 <td data-format-fiat data-format-value="1.87990999222">1.88</td>
@@ -6165,7 +6177,7 @@ SJCX
 <td data-format-fiat data-format-value="1.39379000664">1.39</td>
 <td data-format-fiat data-format-value="1.5273900032">1.53</td>
 <td data-format-market-cap data-format-value="15569.0996094">15,569</td>
-<td data-format-market-cap data-format-value="-">-</td>
+ <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Dec 26, 2017</td>
@@ -6283,7 +6295,7 @@ SJCX
 <td data-format-fiat data-format-value="0.365182995796">0.365183</td>
 <td data-format-market-cap data-format-value="466.005004883">466</td>
 <td data-format-market-cap data-format-value="-">-</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Dec 03, 2017</td>
 <td data-format-fiat data-format-value="0.250535011292">0.250535</td>
@@ -6322,7 +6334,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 28, 2017</td>
-<td data-format-fiat data-format-value="0.338164001703">0.338164</td>
+ <td data-format-fiat data-format-value="0.338164001703">0.338164</td>
 <td data-format-fiat data-format-value="0.366044998169">0.366045</td>
 <td data-format-fiat data-format-value="0.283428996801">0.283429</td>
 <td data-format-fiat data-format-value="0.32878100872">0.328781</td>
@@ -6335,7 +6347,7 @@ SJCX
 <td data-format-fiat data-format-value="0.326597005129">0.326597</td>
 <td data-format-fiat data-format-value="0.256628006697">0.256628</td>
 <td data-format-fiat data-format-value="0.326597005129">0.326597</td>
- <td data-format-market-cap data-format-value="564.057983398">564</td>
+<td data-format-market-cap data-format-value="564.057983398">564</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
@@ -6387,7 +6399,7 @@ SJCX
 <td class="text-left">Nov 19, 2017</td>
 <td data-format-fiat data-format-value="0.605898976326">0.605899</td>
 <td data-format-fiat data-format-value="0.662636995316">0.662637</td>
- <td data-format-fiat data-format-value="0.582988977432">0.582989</td>
+<td data-format-fiat data-format-value="0.582988977432">0.582989</td>
 <td data-format-fiat data-format-value="0.620113015175">0.620113</td>
 <td data-format-market-cap data-format-value="35686.8007812">35,687</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -6439,7 +6451,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 13, 2017</td>
- <td data-format-fiat data-format-value="0.401621997356">0.401622</td>
+<td data-format-fiat data-format-value="0.401621997356">0.401622</td>
 <td data-format-fiat data-format-value="0.511906027794">0.511906</td>
 <td data-format-fiat data-format-value="0.386550992727">0.386551</td>
 <td data-format-fiat data-format-value="0.491432011127">0.491432</td>
@@ -6490,7 +6502,7 @@ SJCX
 <td data-format-fiat data-format-value="0.525201022625">0.525201</td>
 <td data-format-market-cap data-format-value="136931.0">136,931</td>
 <td data-format-market-cap data-format-value="-">-</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Nov 07, 2017</td>
 <td data-format-fiat data-format-value="0.464511990547">0.464512</td>
@@ -6594,7 +6606,7 @@ SJCX
 <td class="text-left">Oct 27, 2017</td>
 <td data-format-fiat data-format-value="0.483660012484">0.483660</td>
 <td data-format-fiat data-format-value="0.632790982723">0.632791</td>
- <td data-format-fiat data-format-value="0.483660012484">0.483660</td>
+<td data-format-fiat data-format-value="0.483660012484">0.483660</td>
 <td data-format-fiat data-format-value="0.567875981331">0.567876</td>
 <td data-format-market-cap data-format-value="425850.0">425,850</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -6646,7 +6658,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 21, 2017</td>
- <td data-format-fiat data-format-value="0.39129498601">0.391295</td>
+<td data-format-fiat data-format-value="0.39129498601">0.391295</td>
 <td data-format-fiat data-format-value="0.39273801446">0.392738</td>
 <td data-format-fiat data-format-value="0.354333013296">0.354333</td>
 <td data-format-fiat data-format-value="0.373517990112">0.373518</td>
@@ -6735,7 +6747,7 @@ SJCX
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Oct 11, 2017</td>
+ <td class="text-left">Oct 11, 2017</td>
 <td data-format-fiat data-format-value="0.436459004879">0.436459</td>
 <td data-format-fiat data-format-value="0.493227005005">0.493227</td>
 <td data-format-fiat data-format-value="0.421086013317">0.421086</td>
@@ -6786,7 +6798,7 @@ SJCX
 <td data-format-fiat data-format-value="0.51796901226">0.517969</td>
 <td data-format-fiat data-format-value="0.577055990696">0.577056</td>
 <td data-format-market-cap data-format-value="46454.6992188">46,455</td>
-<td data-format-market-cap data-format-value="-">-</td>
+ <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 05, 2017</td>
@@ -6838,7 +6850,7 @@ SJCX
 <td data-format-fiat data-format-value="0.563013017178">0.563013</td>
 <td data-format-fiat data-format-value="0.59700602293">0.597006</td>
 <td data-format-fiat data-format-value="0.550285995007">0.550286</td>
-<td data-format-fiat data-format-value="0.578665971756">0.578666</td>
+ <td data-format-fiat data-format-value="0.578665971756">0.578666</td>
 <td data-format-market-cap data-format-value="35899.6015625">35,900</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
@@ -6852,7 +6864,7 @@ SJCX
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Sep 28, 2017</td>
+<td class="text-left">Sep 28, 2017</td>
 <td data-format-fiat data-format-value="0.582485020161">0.582485</td>
 <td data-format-fiat data-format-value="0.583437979221">0.583438</td>
 <td data-format-fiat data-format-value="0.522080004215">0.522080</td>
@@ -6890,7 +6902,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Sep 24, 2017</td>
 <td data-format-fiat data-format-value="0.522852003574">0.522852</td>
-<td data-format-fiat data-format-value="0.522852003574">0.522852</td>
+ <td data-format-fiat data-format-value="0.522852003574">0.522852</td>
 <td data-format-fiat data-format-value="0.471087008715">0.471087</td>
 <td data-format-fiat data-format-value="0.475906997919">0.475907</td>
 <td data-format-market-cap data-format-value="38864.0">38,864</td>
@@ -6903,7 +6915,7 @@ SJCX
 <td data-format-fiat data-format-value="0.46839800477">0.468398</td>
 <td data-format-fiat data-format-value="0.523199975491">0.523200</td>
 <td data-format-market-cap data-format-value="74419.1015625">74,419</td>
- <td data-format-market-cap data-format-value="-">-</td>
+<td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 22, 2017</td>
@@ -6971,7 +6983,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Sep 15, 2017</td>
 <td data-format-fiat data-format-value="0.420599997044">0.420600</td>
- <td data-format-fiat data-format-value="0.49695199728">0.496952</td>
+<td data-format-fiat data-format-value="0.49695199728">0.496952</td>
 <td data-format-fiat data-format-value="0.319373995066">0.319374</td>
 <td data-format-fiat data-format-value="0.482688009739">0.482688</td>
 <td data-format-market-cap data-format-value="116521.0">116,521</td>
@@ -7022,7 +7034,7 @@ SJCX
 <td data-format-market-cap data-format-value="23092.4003906">23,092</td>
 <td data-format-market-cap data-format-value="-">-</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Sep 09, 2017</td>
 <td data-format-fiat data-format-value="0.71996897459">0.719969</td>
 <td data-format-fiat data-format-value="0.738622009754">0.738622</td>
@@ -7097,7 +7109,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Sep 01, 2017</td>
 <td data-format-fiat data-format-value="1.04524004459">1.05</td>
-<td data-format-fiat data-format-value="1.13363003731">1.13</td>
+ <td data-format-fiat data-format-value="1.13363003731">1.13</td>
 <td data-format-fiat data-format-value="1.01433002949">1.01</td>
 <td data-format-fiat data-format-value="1.05200004578">1.05</td>
 <td data-format-market-cap data-format-value="390816.0">390,816</td>
@@ -7254,7 +7266,7 @@ SJCX
 <td data-format-fiat data-format-value="1.26170003414">1.26</td>
 <td data-format-fiat data-format-value="1.38993000984">1.39</td>
 <td data-format-market-cap data-format-value="1103390.0">1,103,390</td>
-<td data-format-market-cap data-format-value="-">-</td>
+ <td data-format-market-cap data-format-value="-">-</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 14, 2017</td>
@@ -7513,7 +7525,7 @@ SJCX
 <td data-format-fiat data-format-value="0.363508999348">0.363509</td>
 <td data-format-fiat data-format-value="0.395103007555">0.395103</td>
 <td data-format-fiat data-format-value="0.349940985441">0.349941</td>
-<td data-format-fiat data-format-value="0.392989993095">0.392990</td>
+ <td data-format-fiat data-format-value="0.392989993095">0.392990</td>
 <td data-format-market-cap data-format-value="154132.0">154,132</td>
 <td data-format-market-cap data-format-value="20110533.8606">20,110,534</td>
 </tr>
@@ -7592,7 +7604,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Jul 08, 2017</td>
 <td data-format-fiat data-format-value="0.612923979759">0.612924</td>
- <td data-format-fiat data-format-value="0.709087014198">0.709087</td>
+<td data-format-fiat data-format-value="0.709087014198">0.709087</td>
 <td data-format-fiat data-format-value="0.586031019688">0.586031</td>
 <td data-format-fiat data-format-value="0.681191980839">0.681192</td>
 <td data-format-market-cap data-format-value="322124.0">322,124</td>
@@ -7714,7 +7726,7 @@ SJCX
 <td data-format-fiat data-format-value="1.02189004421">1.02</td>
 <td data-format-market-cap data-format-value="381884.0">381,884</td>
 <td data-format-market-cap data-format-value="52293324.1222">52,293,324</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Jun 24, 2017</td>
 <td data-format-fiat data-format-value="1.15101003647">1.15</td>
@@ -8049,7 +8061,7 @@ SJCX
 <td data-format-market-cap data-format-value="29436634.662">29,436,635</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">May 18, 2017</td>
+<td class="text-left">May 18, 2017</td>
 <td data-format-fiat data-format-value="0.636581003666">0.636581</td>
 <td data-format-fiat data-format-value="0.657275974751">0.657276</td>
 <td data-format-fiat data-format-value="0.583975970745">0.583976</td>
@@ -8121,7 +8133,7 @@ SJCX
 <td data-format-market-cap data-format-value="24897474.4429">24,897,474</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">May 10, 2017</td>
+ <td class="text-left">May 10, 2017</td>
 <td data-format-fiat data-format-value="0.49471399188">0.494714</td>
 <td data-format-fiat data-format-value="0.522020995617">0.522021</td>
 <td data-format-fiat data-format-value="0.452643990517">0.452644</td>
@@ -8171,7 +8183,7 @@ SJCX
 <td data-format-fiat data-format-value="0.487197995186">0.487198</td>
 <td data-format-fiat data-format-value="0.427168995142">0.427169</td>
 <td data-format-fiat data-format-value="0.448949992657">0.448950</td>
-<td data-format-market-cap data-format-value="471813.0">471,813</td>
+ <td data-format-market-cap data-format-value="471813.0">471,813</td>
 <td data-format-market-cap data-format-value="22974182.9988">22,974,183</td>
 </tr>
 <tr class="text-right">
@@ -8250,7 +8262,7 @@ SJCX
 <td class="text-left">Apr 26, 2017</td>
 <td data-format-fiat data-format-value="0.44721698761">0.447217</td>
 <td data-format-fiat data-format-value="0.452903985977">0.452904</td>
- <td data-format-fiat data-format-value="0.374657005072">0.374657</td>
+<td data-format-fiat data-format-value="0.374657005072">0.374657</td>
 <td data-format-fiat data-format-value="0.400281995535">0.400282</td>
 <td data-format-market-cap data-format-value="434631.0">434,631</td>
 <td data-format-market-cap data-format-value="20483688.4266">20,483,688</td>
@@ -8300,7 +8312,7 @@ SJCX
 <td data-format-market-cap data-format-value="723799.0">723,799</td>
 <td data-format-market-cap data-format-value="19139984.0115">19,139,984</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Apr 20, 2017</td>
 <td data-format-fiat data-format-value="0.284381985664">0.284382</td>
 <td data-format-fiat data-format-value="0.335595011711">0.335595</td>
@@ -8473,7 +8485,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 01, 2017</td>
-<td data-format-fiat data-format-value="0.24328699708">0.243287</td>
+ <td data-format-fiat data-format-value="0.24328699708">0.243287</td>
 <td data-format-fiat data-format-value="0.24666300416">0.246663</td>
 <td data-format-fiat data-format-value="0.202708005905">0.202708</td>
 <td data-format-fiat data-format-value="0.232807993889">0.232808</td>
@@ -8623,7 +8635,7 @@ SJCX
 <td data-format-fiat data-format-value="0.17809599638">0.178096</td>
 <td data-format-market-cap data-format-value="79974.1015625">79,974</td>
 <td data-format-market-cap data-format-value="8988174.57382">8,988,175</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Mar 15, 2017</td>
 <td data-format-fiat data-format-value="0.199643999338">0.199644</td>
@@ -8732,7 +8744,7 @@ SJCX
 <td data-format-market-cap data-format-value="28704.5996094">28,705</td>
 <td data-format-market-cap data-format-value="7672066.31459">7,672,066</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Mar 03, 2017</td>
 <td data-format-fiat data-format-value="0.15036700666">0.150367</td>
 <td data-format-fiat data-format-value="0.164125993848">0.164126</td>
@@ -8774,7 +8786,7 @@ SJCX
 <td data-format-fiat data-format-value="0.16156899929">0.161569</td>
 <td data-format-fiat data-format-value="0.14738599956">0.147386</td>
 <td data-format-fiat data-format-value="0.14882799983">0.148828</td>
-<td data-format-market-cap data-format-value="32389.3007812">32,389</td>
+ <td data-format-market-cap data-format-value="32389.3007812">32,389</td>
 <td data-format-market-cap data-format-value="7511072.93523">7,511,073</td>
 </tr>
 <tr class="text-right">
@@ -8833,7 +8845,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 20, 2017</td>
- <td data-format-fiat data-format-value="0.131796002388">0.131796</td>
+<td data-format-fiat data-format-value="0.131796002388">0.131796</td>
 <td data-format-fiat data-format-value="0.139303997159">0.139304</td>
 <td data-format-fiat data-format-value="0.1305270046">0.130527</td>
 <td data-format-fiat data-format-value="0.136867001653">0.136867</td>
@@ -8925,7 +8937,7 @@ SJCX
 <td class="text-left">Feb 10, 2017</td>
 <td data-format-fiat data-format-value="0.12312900275">0.123129</td>
 <td data-format-fiat data-format-value="0.128625005484">0.128625</td>
-<td data-format-fiat data-format-value="0.116609998047">0.116610</td>
+ <td data-format-fiat data-format-value="0.116609998047">0.116610</td>
 <td data-format-fiat data-format-value="0.126126006246">0.126126</td>
 <td data-format-market-cap data-format-value="10771.2001953">10,771</td>
 <td data-format-market-cap data-format-value="6365345.13014">6,365,345</td>
@@ -8975,7 +8987,7 @@ SJCX
 <td data-format-market-cap data-format-value="7957.93017578">7,958</td>
 <td data-format-market-cap data-format-value="7021935.68358">7,021,936</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Feb 04, 2017</td>
 <td data-format-fiat data-format-value="0.139126002789">0.139126</td>
 <td data-format-fiat data-format-value="0.139283001423">0.139283</td>
@@ -9176,7 +9188,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Jan 13, 2017</td>
 <td data-format-fiat data-format-value="0.120483003557">0.120483</td>
-<td data-format-fiat data-format-value="0.126928001642">0.126928</td>
+ <td data-format-fiat data-format-value="0.126928001642">0.126928</td>
 <td data-format-fiat data-format-value="0.116717003286">0.116717</td>
 <td data-format-fiat data-format-value="0.122335001826">0.122335</td>
 <td data-format-market-cap data-format-value="1806.16003418">1,806</td>
@@ -9334,7 +9346,7 @@ SJCX
 <td data-format-fiat data-format-value="0.114734999835">0.114735</td>
 <td data-format-market-cap data-format-value="22885.4003906">22,885</td>
 <td data-format-market-cap data-format-value="5790462.50184">5,790,463</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Dec 26, 2016</td>
 <td data-format-fiat data-format-value="0.121849000454">0.121849</td>
@@ -9435,7 +9447,7 @@ SJCX
 <td data-format-market-cap data-format-value="7324340.80243">7,324,341</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Dec 15, 2016</td>
+<td class="text-left">Dec 15, 2016</td>
 <td data-format-fiat data-format-value="0.140541002154">0.140541</td>
 <td data-format-fiat data-format-value="0.168494999409">0.168495</td>
 <td data-format-fiat data-format-value="0.134846001863">0.134846</td>
@@ -9485,7 +9497,7 @@ SJCX
 <td data-format-fiat data-format-value="0.150575995445">0.150576</td>
 <td data-format-fiat data-format-value="0.140861004591">0.140861</td>
 <td data-format-fiat data-format-value="0.145616993308">0.145617</td>
- <td data-format-market-cap data-format-value="3885.5300293">3,886</td>
+<td data-format-market-cap data-format-value="3885.5300293">3,886</td>
 <td data-format-market-cap data-format-value="7349019.72485">7,349,020</td>
 </tr>
 <tr class="text-right">
@@ -9585,7 +9597,7 @@ SJCX
 <td data-format-fiat data-format-value="0.138615995646">0.138616</td>
 <td data-format-fiat data-format-value="0.146836996078">0.146837</td>
 <td data-format-market-cap data-format-value="6895.97998047">6,896</td>
- <td data-format-market-cap data-format-value="7410590.86053">7,410,591</td>
+<td data-format-market-cap data-format-value="7410590.86053">7,410,591</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 28, 2016</td>
@@ -9678,7 +9690,7 @@ SJCX
 <td data-format-market-cap data-format-value="7802980.68013">7,802,981</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Nov 18, 2016</td>
+ <td class="text-left">Nov 18, 2016</td>
 <td data-format-fiat data-format-value="0.157168999314">0.157169</td>
 <td data-format-fiat data-format-value="0.160786002874">0.160786</td>
 <td data-format-fiat data-format-value="0.147810995579">0.147811</td>
@@ -9686,7 +9698,6 @@ SJCX
 <td data-format-market-cap data-format-value="15378.2001953">15,378</td>
 <td data-format-market-cap data-format-value="7713349.25638">7,713,349</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Nov 17, 2016</td>
 <td data-format-fiat data-format-value="0.16921800375">0.169218</td>
@@ -9737,7 +9748,7 @@ SJCX
 <td data-format-fiat data-format-value="0.169275000691">0.169275</td>
 <td data-format-fiat data-format-value="0.17678399384">0.176784</td>
 <td data-format-fiat data-format-value="0.163329005241">0.163329</td>
- <td data-format-fiat data-format-value="0.168997004628">0.168997</td>
+<td data-format-fiat data-format-value="0.168997004628">0.168997</td>
 <td data-format-market-cap data-format-value="4624.31982422">4,624</td>
 <td data-format-market-cap data-format-value="8528964.93157">8,528,965</td>
 </tr>
@@ -9888,7 +9899,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Oct 26, 2016</td>
 <td data-format-fiat data-format-value="0.161754995584">0.161755</td>
- <td data-format-fiat data-format-value="0.169770002365">0.169770</td>
+<td data-format-fiat data-format-value="0.169770002365">0.169770</td>
 <td data-format-fiat data-format-value="0.155634000897">0.155634</td>
 <td data-format-fiat data-format-value="0.162757992744">0.162758</td>
 <td data-format-market-cap data-format-value="11240.2001953">11,240</td>
@@ -9930,6 +9941,7 @@ SJCX
 <td data-format-market-cap data-format-value="21209.4003906">21,209</td>
 <td data-format-market-cap data-format-value="8075709.88499">8,075,710</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Oct 21, 2016</td>
 <td data-format-fiat data-format-value="0.15285000205">0.152850</td>
@@ -9980,7 +9992,7 @@ SJCX
 <td data-format-fiat data-format-value="0.155540004373">0.155540</td>
 <td data-format-fiat data-format-value="0.156014993787">0.156015</td>
 <td data-format-fiat data-format-value="0.152530997992">0.152531</td>
-<td data-format-fiat data-format-value="0.152530997992">0.152531</td>
+ <td data-format-fiat data-format-value="0.152530997992">0.152531</td>
 <td data-format-market-cap data-format-value="4544.83007812">4,545</td>
 <td data-format-market-cap data-format-value="7675076.82246">7,675,077</td>
 </tr>
@@ -10131,7 +10143,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Sep 29, 2016</td>
 <td data-format-fiat data-format-value="0.165407001972">0.165407</td>
-<td data-format-fiat data-format-value="0.171964004636">0.171964</td>
+ <td data-format-fiat data-format-value="0.171964004636">0.171964</td>
 <td data-format-fiat data-format-value="0.162971004844">0.162971</td>
 <td data-format-fiat data-format-value="0.16348400712">0.163484</td>
 <td data-format-market-cap data-format-value="14146.2998047">14,146</td>
@@ -10281,7 +10293,7 @@ SJCX
 <td data-format-market-cap data-format-value="411548.0">411,548</td>
 <td data-format-market-cap data-format-value="9287169.51994">9,287,170</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Sep 12, 2016</td>
 <td data-format-fiat data-format-value="0.153196007013">0.153196</td>
 <td data-format-fiat data-format-value="0.228703007102">0.228703</td>
@@ -10289,7 +10301,7 @@ SJCX
 <td data-format-fiat data-format-value="0.194939002395">0.194939</td>
 <td data-format-market-cap data-format-value="657558.0">657,558</td>
 <td data-format-market-cap data-format-value="9808968.67322">9,808,969</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Sep 11, 2016</td>
 <td data-format-fiat data-format-value="0.151540994644">0.151541</td>
@@ -10390,7 +10402,7 @@ SJCX
 <td data-format-market-cap data-format-value="5979053.4608">5,979,053</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Aug 31, 2016</td>
+<td class="text-left">Aug 31, 2016</td>
 <td data-format-fiat data-format-value="0.122657001019">0.122657</td>
 <td data-format-fiat data-format-value="0.123969003558">0.123969</td>
 <td data-format-fiat data-format-value="0.116476997733">0.116477</td>
@@ -10440,7 +10452,7 @@ SJCX
 <td data-format-fiat data-format-value="0.121266998351">0.121267</td>
 <td data-format-fiat data-format-value="0.116871997714">0.116872</td>
 <td data-format-fiat data-format-value="0.117380999029">0.117381</td>
- <td data-format-market-cap data-format-value="2382.04003906">2,382</td>
+<td data-format-market-cap data-format-value="2382.04003906">2,382</td>
 <td data-format-market-cap data-format-value="5812489.14348">5,812,489</td>
 </tr>
 <tr class="text-right">
@@ -10540,7 +10552,7 @@ SJCX
 <td data-format-fiat data-format-value="0.117587998509">0.117588</td>
 <td data-format-fiat data-format-value="0.117666997015">0.117667</td>
 <td data-format-market-cap data-format-value="15661.0996094">15,661</td>
- <td data-format-market-cap data-format-value="5826651.33238">5,826,651</td>
+<td data-format-market-cap data-format-value="5826651.33238">5,826,651</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 14, 2016</td>
@@ -10633,7 +10645,7 @@ SJCX
 <td data-format-market-cap data-format-value="6117075.24108">6,117,075</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Aug 04, 2016</td>
+ <td class="text-left">Aug 04, 2016</td>
 <td data-format-fiat data-format-value="0.119228996336">0.119229</td>
 <td data-format-fiat data-format-value="0.132134005427">0.132134</td>
 <td data-format-fiat data-format-value="0.118988998234">0.118989</td>
@@ -10691,7 +10703,7 @@ SJCX
 <td data-format-fiat data-format-value="0.117273002863">0.117273</td>
 <td data-format-fiat data-format-value="0.122420996428">0.122421</td>
 <td data-format-fiat data-format-value="0.115218997002">0.115219</td>
- <td data-format-fiat data-format-value="0.122210003436">0.122210</td>
+<td data-format-fiat data-format-value="0.122210003436">0.122210</td>
 <td data-format-market-cap data-format-value="17137.0">17,137</td>
 <td data-format-market-cap data-format-value="6051612.25603">6,051,612</td>
 </tr>
@@ -10742,7 +10754,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 23, 2016</td>
- <td data-format-fiat data-format-value="0.1213349998">0.121335</td>
+<td data-format-fiat data-format-value="0.1213349998">0.121335</td>
 <td data-format-fiat data-format-value="0.131208002567">0.131208</td>
 <td data-format-fiat data-format-value="0.120956003666">0.120956</td>
 <td data-format-fiat data-format-value="0.131095007062">0.131095</td>
@@ -10783,7 +10795,7 @@ SJCX
 <td data-format-fiat data-format-value="0.134883001447">0.134883</td>
 <td data-format-fiat data-format-value="0.144996002316">0.144996</td>
 <td data-format-market-cap data-format-value="42321.8984375">42,322</td>
-<td data-format-market-cap data-format-value="7179932.66243">7,179,933</td>
+ <td data-format-market-cap data-format-value="7179932.66243">7,179,933</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 18, 2016</td>
@@ -10884,6 +10896,7 @@ SJCX
 <td data-format-market-cap data-format-value="63482.8007812">63,483</td>
 <td data-format-market-cap data-format-value="6085680.73841">6,085,681</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Jul 07, 2016</td>
 <td data-format-fiat data-format-value="0.117591001093">0.117591</td>
@@ -10934,7 +10947,7 @@ SJCX
 <td data-format-fiat data-format-value="0.117340996861">0.117341</td>
 <td data-format-fiat data-format-value="0.122979000211">0.122979</td>
 <td data-format-fiat data-format-value="0.107183001935">0.107183</td>
-<td data-format-fiat data-format-value="0.116426996887">0.116427</td>
+ <td data-format-fiat data-format-value="0.116426996887">0.116427</td>
 <td data-format-market-cap data-format-value="16289.7998047">16,290</td>
 <td data-format-market-cap data-format-value="5765248.83506">5,765,249</td>
 </tr>
@@ -10992,7 +11005,7 @@ SJCX
 <td data-format-market-cap data-format-value="38001.8007812">38,002</td>
 <td data-format-market-cap data-format-value="5307552.63931">5,307,553</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Jun 25, 2016</td>
 <td data-format-fiat data-format-value="0.0947626978159">0.094763</td>
 <td data-format-fiat data-format-value="0.12467200309">0.124672</td>
@@ -11034,7 +11047,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0945570990443">0.094557</td>
 <td data-format-fiat data-format-value="0.0832720026374">0.083272</td>
 <td data-format-fiat data-format-value="0.0832720026374">0.083272</td>
-<td data-format-market-cap data-format-value="40247.1992188">40,247</td>
+ <td data-format-market-cap data-format-value="40247.1992188">40,247</td>
 <td data-format-market-cap data-format-value="4123474.8039">4,123,475</td>
 </tr>
 <tr class="text-right">
@@ -11134,7 +11147,7 @@ SJCX
 <td data-format-fiat data-format-value="0.104259997606">0.104260</td>
 <td data-format-fiat data-format-value="0.105397000909">0.105397</td>
 <td data-format-market-cap data-format-value="20610.8007812">20,611</td>
-<td data-format-market-cap data-format-value="5219063.71777">5,219,064</td>
+ <td data-format-market-cap data-format-value="5219063.71777">5,219,064</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 09, 2016</td>
@@ -11242,7 +11255,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0890168994665">0.089017</td>
 <td data-format-fiat data-format-value="0.0984582975507">0.098458</td>
 <td data-format-market-cap data-format-value="67598.703125">67,599</td>
- <td data-format-market-cap data-format-value="4875472.17894">4,875,472</td>
+<td data-format-market-cap data-format-value="4875472.17894">4,875,472</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">May 28, 2016</td>
@@ -11342,7 +11355,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0903002992272">0.090300</td>
 <td data-format-market-cap data-format-value="91768.5">91,769</td>
 <td data-format-market-cap data-format-value="4471503.16834">4,471,503</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">May 17, 2016</td>
 <td data-format-fiat data-format-value="0.0682225003839">0.068223</td>
@@ -11592,7 +11605,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0913306996226">0.091331</td>
 <td data-format-fiat data-format-value="0.084467202425">0.084467</td>
 <td data-format-fiat data-format-value="0.0875530019403">0.087553</td>
- <td data-format-market-cap data-format-value="20786.5996094">20,787</td>
+<td data-format-market-cap data-format-value="20786.5996094">20,787</td>
 <td data-format-market-cap data-format-value="4335461.97408">4,335,462</td>
 </tr>
 <tr class="text-right">
@@ -11692,7 +11705,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0907519981265">0.090752</td>
 <td data-format-fiat data-format-value="0.0985215976834">0.098522</td>
 <td data-format-market-cap data-format-value="106430.0">106,430</td>
- <td data-format-market-cap data-format-value="4878606.67739">4,878,607</td>
+<td data-format-market-cap data-format-value="4878606.67739">4,878,607</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 08, 2016</td>
@@ -11784,7 +11797,7 @@ SJCX
 <td data-format-market-cap data-format-value="17289.4003906">17,289</td>
 <td data-format-market-cap data-format-value="3930241.08514">3,930,241</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Mar 29, 2016</td>
 <td data-format-fiat data-format-value="0.089251101017">0.089251</td>
 <td data-format-fiat data-format-value="0.0902319997549">0.090232</td>
@@ -11792,7 +11805,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0853485018015">0.085349</td>
 <td data-format-market-cap data-format-value="60166.5">60,167</td>
 <td data-format-market-cap data-format-value="3804483.64069">3,804,484</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Mar 28, 2016</td>
 <td data-format-fiat data-format-value="0.091862000525">0.091862</td>
@@ -11934,7 +11947,7 @@ SJCX
 <td data-format-fiat data-format-value="0.111640997231">0.111641</td>
 <td data-format-fiat data-format-value="0.0876780003309">0.087678</td>
 <td data-format-fiat data-format-value="0.0894697010517">0.089470</td>
-<td data-format-market-cap data-format-value="66988.5">66,989</td>
+ <td data-format-market-cap data-format-value="66988.5">66,989</td>
 <td data-format-market-cap data-format-value="3988189.71614">3,988,190</td>
 </tr>
 <tr class="text-right">
@@ -11993,7 +12006,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 06, 2016</td>
- <td data-format-fiat data-format-value="0.0574924014509">0.057492</td>
+<td data-format-fiat data-format-value="0.0574924014509">0.057492</td>
 <td data-format-fiat data-format-value="0.115299001336">0.115299</td>
 <td data-format-fiat data-format-value="0.0532980002463">0.053298</td>
 <td data-format-fiat data-format-value="0.09638299793">0.096383</td>
@@ -12034,7 +12047,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0398029014468">0.039803</td>
 <td data-format-fiat data-format-value="0.04594720155">0.045947</td>
 <td data-format-market-cap data-format-value="24481.0">24,481</td>
-<td data-format-market-cap data-format-value="2048136.41406">2,048,136</td>
+ <td data-format-market-cap data-format-value="2048136.41406">2,048,136</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 01, 2016</td>
@@ -12142,7 +12155,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0408041998744">0.040804</td>
 <td data-format-fiat data-format-value="0.0432135984302">0.043214</td>
 <td data-format-market-cap data-format-value="15343.5996094">15,344</td>
- <td data-format-market-cap data-format-value="1926283.81583">1,926,284</td>
+<td data-format-market-cap data-format-value="1926283.81583">1,926,284</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 18, 2016</td>
@@ -12234,7 +12247,7 @@ SJCX
 <td data-format-market-cap data-format-value="9998.71972656">9,999</td>
 <td data-format-market-cap data-format-value="1531662.5539">1,531,663</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Feb 08, 2016</td>
 <td data-format-fiat data-format-value="0.0339117012918">0.033912</td>
 <td data-format-fiat data-format-value="0.0354572981596">0.035457</td>
@@ -12284,7 +12297,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0283979997039">0.028398</td>
 <td data-format-fiat data-format-value="0.0353469997644">0.035347</td>
 <td data-format-fiat data-format-value="0.0283979997039">0.028398</td>
-<td data-format-fiat data-format-value="0.0328925997019">0.032893</td>
+ <td data-format-fiat data-format-value="0.0328925997019">0.032893</td>
 <td data-format-market-cap data-format-value="30730.4003906">30,730</td>
 <td data-format-market-cap data-format-value="1466216.26156">1,466,216</td>
 </tr>
@@ -12342,7 +12355,7 @@ SJCX
 <td data-format-market-cap data-format-value="14547.2001953">14,547</td>
 <td data-format-market-cap data-format-value="1187857.78376">1,187,858</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Jan 27, 2016</td>
 <td data-format-fiat data-format-value="0.028097499162">0.028097</td>
 <td data-format-fiat data-format-value="0.0292693991214">0.029269</td>
@@ -12392,7 +12405,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0237162001431">0.023716</td>
 <td data-format-fiat data-format-value="0.0265152994543">0.026515</td>
 <td data-format-fiat data-format-value="0.0203383993357">0.020338</td>
- <td data-format-fiat data-format-value="0.021322099492">0.021322</td>
+<td data-format-fiat data-format-value="0.021322099492">0.021322</td>
 <td data-format-market-cap data-format-value="10507.5996094">10,508</td>
 <td data-format-market-cap data-format-value="950451.157727">950,451</td>
 </tr>
@@ -12492,7 +12505,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0169257000089">0.016926</td>
 <td data-format-fiat data-format-value="0.0147176999599">0.014718</td>
 <td data-format-fiat data-format-value="0.01619650051">0.016197</td>
- <td data-format-market-cap data-format-value="6480.56005859">6,481</td>
+<td data-format-market-cap data-format-value="6480.56005859">6,481</td>
 <td data-format-market-cap data-format-value="721973.078455">721,973</td>
 </tr>
 <tr class="text-right">
@@ -12592,7 +12605,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0146391997114">0.014639</td>
 <td data-format-fiat data-format-value="0.0158913005143">0.015891</td>
 <td data-format-market-cap data-format-value="1036.09997559">1,036</td>
- <td data-format-market-cap data-format-value="708368.522931">708,369</td>
+<td data-format-market-cap data-format-value="708368.522931">708,369</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Dec 30, 2015</td>
@@ -12692,7 +12705,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0139076001942">0.013908</td>
 <td data-format-market-cap data-format-value="8839.05957031">8,839</td>
 <td data-format-market-cap data-format-value="619943.369612">619,943</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Dec 19, 2015</td>
 <td data-format-fiat data-format-value="0.0151909999549">0.015191</td>
@@ -12785,7 +12798,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Dec 09, 2015</td>
-<td data-format-fiat data-format-value="0.0124110998586">0.012411</td>
+ <td data-format-fiat data-format-value="0.0124110998586">0.012411</td>
 <td data-format-fiat data-format-value="0.0132577996701">0.013258</td>
 <td data-format-fiat data-format-value="0.010897600092">0.010898</td>
 <td data-format-fiat data-format-value="0.0126133998856">0.012613</td>
@@ -12793,7 +12806,7 @@ SJCX
 <td data-format-market-cap data-format-value="562253.278658">562,253</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Dec 08, 2015</td>
+<td class="text-left">Dec 08, 2015</td>
 <td data-format-fiat data-format-value="0.0128881996498">0.012888</td>
 <td data-format-fiat data-format-value="0.0130439000204">0.013044</td>
 <td data-format-fiat data-format-value="0.0109190000221">0.010919</td>
@@ -12885,7 +12898,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Nov 28, 2015</td>
 <td data-format-fiat data-format-value="0.014142899774">0.014143</td>
-<td data-format-fiat data-format-value="0.0152519997209">0.015252</td>
+ <td data-format-fiat data-format-value="0.0152519997209">0.015252</td>
 <td data-format-fiat data-format-value="0.0124158002436">0.012416</td>
 <td data-format-fiat data-format-value="0.012634200044">0.012634</td>
 <td data-format-market-cap data-format-value="10302.0">10,302</td>
@@ -12993,7 +13006,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Nov 16, 2015</td>
 <td data-format-fiat data-format-value="0.0102888997644">0.010289</td>
- <td data-format-fiat data-format-value="0.0107102999464">0.010710</td>
+<td data-format-fiat data-format-value="0.0107102999464">0.010710</td>
 <td data-format-fiat data-format-value="0.00955830980092">0.009558</td>
 <td data-format-fiat data-format-value="0.00997162982821">0.009972</td>
 <td data-format-market-cap data-format-value="4831.02978516">4,831</td>
@@ -13093,7 +13106,7 @@ SJCX
 <td class="text-left">Nov 05, 2015</td>
 <td data-format-fiat data-format-value="0.012400300242">0.012400</td>
 <td data-format-fiat data-format-value="0.0127849001437">0.012785</td>
- <td data-format-fiat data-format-value="0.00935958977789">0.009360</td>
+<td data-format-fiat data-format-value="0.00935958977789">0.009360</td>
 <td data-format-fiat data-format-value="0.0117036998272">0.011704</td>
 <td data-format-market-cap data-format-value="7729.77978516">7,730</td>
 <td data-format-market-cap data-format-value="521702.609719">521,703</td>
@@ -13135,7 +13148,7 @@ SJCX
 <td data-format-market-cap data-format-value="637564.211023">637,564</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Oct 31, 2015</td>
+ <td class="text-left">Oct 31, 2015</td>
 <td data-format-fiat data-format-value="0.014396100305">0.014396</td>
 <td data-format-fiat data-format-value="0.0146613996476">0.014661</td>
 <td data-format-fiat data-format-value="0.0131066003814">0.013107</td>
@@ -13143,7 +13156,6 @@ SJCX
 <td data-format-market-cap data-format-value="352.044006348">352</td>
 <td data-format-market-cap data-format-value="615280.73361">615,281</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Oct 30, 2015</td>
 <td data-format-fiat data-format-value="0.014247099869">0.014247</td>
@@ -13194,7 +13206,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0146615002304">0.014662</td>
 <td data-format-fiat data-format-value="0.0151666998863">0.015167</td>
 <td data-format-fiat data-format-value="0.0124554000795">0.012455</td>
- <td data-format-fiat data-format-value="0.0140084000304">0.014008</td>
+<td data-format-fiat data-format-value="0.0140084000304">0.014008</td>
 <td data-format-market-cap data-format-value="4211.64990234">4,212</td>
 <td data-format-market-cap data-format-value="624436.617308">624,437</td>
 </tr>
@@ -13286,7 +13298,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0157719999552">0.015772</td>
 <td data-format-fiat data-format-value="0.0160230994225">0.016023</td>
 <td data-format-market-cap data-format-value="793.538024902">794</td>
-<td data-format-market-cap data-format-value="714243.622597">714,244</td>
+ <td data-format-market-cap data-format-value="714243.622597">714,244</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 14, 2015</td>
@@ -13386,7 +13398,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0170335993171">0.017034</td>
 <td data-format-market-cap data-format-value="1186.65002441">1,187</td>
 <td data-format-market-cap data-format-value="759287.539232">759,288</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Oct 03, 2015</td>
 <td data-format-fiat data-format-value="0.0164823997766">0.016482</td>
@@ -13487,7 +13499,7 @@ SJCX
 <td data-format-market-cap data-format-value="720840.851357">720,841</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Sep 22, 2015</td>
+ <td class="text-left">Sep 22, 2015</td>
 <td data-format-fiat data-format-value="0.0177366007119">0.017737</td>
 <td data-format-fiat data-format-value="0.0178507007658">0.017851</td>
 <td data-format-fiat data-format-value="0.0162447001785">0.016245</td>
@@ -13495,7 +13507,6 @@ SJCX
 <td data-format-market-cap data-format-value="2043.14001465">2,043</td>
 <td data-format-market-cap data-format-value="734111.087856">734,111</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Sep 21, 2015</td>
 <td data-format-fiat data-format-value="0.0156872998923">0.015687</td>
@@ -13546,7 +13557,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0167072992772">0.016707</td>
 <td data-format-fiat data-format-value="0.0171272996813">0.017127</td>
 <td data-format-fiat data-format-value="0.0160239990801">0.016024</td>
- <td data-format-fiat data-format-value="0.0160521995276">0.016052</td>
+<td data-format-fiat data-format-value="0.0160521995276">0.016052</td>
 <td data-format-market-cap data-format-value="1374.75">1,375</td>
 <td data-format-market-cap data-format-value="715540.780414">715,541</td>
 </tr>
@@ -13646,7 +13657,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0174995008856">0.017500</td>
 <td data-format-fiat data-format-value="0.0164810009301">0.016481</td>
 <td data-format-fiat data-format-value="0.0174029003829">0.017403</td>
- <td data-format-market-cap data-format-value="1147.79003906">1,148</td>
+<td data-format-market-cap data-format-value="1147.79003906">1,148</td>
 <td data-format-market-cap data-format-value="775749.408023">775,749</td>
 </tr>
 <tr class="text-right">
@@ -13746,7 +13757,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0131029002368">0.013103</td>
 <td data-format-fiat data-format-value="0.0163777992129">0.016378</td>
 <td data-format-market-cap data-format-value="7573.12011719">7,573</td>
- <td data-format-market-cap data-format-value="730054.683686">730,055</td>
+<td data-format-market-cap data-format-value="730054.683686">730,055</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 24, 2015</td>
@@ -13846,7 +13857,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0167644992471">0.016764</td>
 <td data-format-market-cap data-format-value="4962.43994141">4,962</td>
 <td data-format-market-cap data-format-value="747292.172615">747,292</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Aug 13, 2015</td>
 <td data-format-fiat data-format-value="0.0187004003674">0.018700</td>
@@ -13939,7 +13950,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 03, 2015</td>
-<td data-format-fiat data-format-value="0.0195819009095">0.019582</td>
+ <td data-format-fiat data-format-value="0.0195819009095">0.019582</td>
 <td data-format-fiat data-format-value="0.0202494002879">0.020249</td>
 <td data-format-fiat data-format-value="0.0171579997987">0.017158</td>
 <td data-format-fiat data-format-value="0.0179504994303">0.017950</td>
@@ -13947,7 +13958,7 @@ SJCX
 <td data-format-market-cap data-format-value="744306.784002">744,307</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Aug 02, 2015</td>
+<td class="text-left">Aug 02, 2015</td>
 <td data-format-fiat data-format-value="0.0192280001938">0.019228</td>
 <td data-format-fiat data-format-value="0.0194579008967">0.019458</td>
 <td data-format-fiat data-format-value="0.0180904008448">0.018090</td>
@@ -14097,7 +14108,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0187903996557">0.018790</td>
 <td data-format-fiat data-format-value="0.0195939000696">0.019594</td>
 <td data-format-market-cap data-format-value="127.364997864">127</td>
- <td data-format-market-cap data-format-value="812449.385536">812,449</td>
+<td data-format-market-cap data-format-value="812449.385536">812,449</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 16, 2015</td>
@@ -14197,7 +14208,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0180348008871">0.018035</td>
 <td data-format-market-cap data-format-value="510.20199585">510</td>
 <td data-format-market-cap data-format-value="747802.233259">747,802</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jul 05, 2015</td>
 <td data-format-fiat data-format-value="0.017986100167">0.017986</td>
@@ -14340,7 +14351,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0164446998388">0.016445</td>
 <td data-format-fiat data-format-value="0.0174505002797">0.017451</td>
 <td data-format-market-cap data-format-value="358.505004883">359</td>
-<td data-format-market-cap data-format-value="723574.582002">723,575</td>
+ <td data-format-market-cap data-format-value="723574.582002">723,575</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 19, 2015</td>
@@ -14440,7 +14451,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0162934008986">0.016293</td>
 <td data-format-market-cap data-format-value="1168.04003906">1,168</td>
 <td data-format-market-cap data-format-value="675596.120134">675,596</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Jun 08, 2015</td>
 <td data-format-fiat data-format-value="0.0199469998479">0.019947</td>
@@ -14499,7 +14510,7 @@ SJCX
 <td class="text-left">Jun 02, 2015</td>
 <td data-format-fiat data-format-value="0.0179120991379">0.017912</td>
 <td data-format-fiat data-format-value="0.0189784001559">0.018978</td>
- <td data-format-fiat data-format-value="0.0164700001478">0.016470</td>
+<td data-format-fiat data-format-value="0.0164700001478">0.016470</td>
 <td data-format-fiat data-format-value="0.0180098004639">0.018010</td>
 <td data-format-market-cap data-format-value="2049.09008789">2,049</td>
 <td data-format-market-cap data-format-value="746765.623159">746,766</td>
@@ -14541,7 +14552,7 @@ SJCX
 <td data-format-market-cap data-format-value="784535.548763">784,536</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">May 28, 2015</td>
+ <td class="text-left">May 28, 2015</td>
 <td data-format-fiat data-format-value="0.0181389003992">0.018139</td>
 <td data-format-fiat data-format-value="0.019200000912">0.019200</td>
 <td data-format-fiat data-format-value="0.0180826000869">0.018083</td>
@@ -14549,7 +14560,6 @@ SJCX
 <td data-format-market-cap data-format-value="601.17199707">601</td>
 <td data-format-market-cap data-format-value="761008.645933">761,009</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">May 27, 2015</td>
 <td data-format-fiat data-format-value="0.0191169008613">0.019117</td>
@@ -14600,7 +14610,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0188145991415">0.018815</td>
 <td data-format-fiat data-format-value="0.0193080995232">0.019308</td>
 <td data-format-fiat data-format-value="0.0179913006723">0.017991</td>
- <td data-format-fiat data-format-value="0.018703199923">0.018703</td>
+<td data-format-fiat data-format-value="0.018703199923">0.018703</td>
 <td data-format-market-cap data-format-value="280.399993896">280</td>
 <td data-format-market-cap data-format-value="775517.040893">775,517</td>
 </tr>
@@ -14700,7 +14710,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0242250002921">0.024225</td>
 <td data-format-fiat data-format-value="0.0201168991625">0.020117</td>
 <td data-format-fiat data-format-value="0.022838300094">0.022838</td>
- <td data-format-market-cap data-format-value="3581.69995117">3,582</td>
+<td data-format-market-cap data-format-value="3581.69995117">3,582</td>
 <td data-format-market-cap data-format-value="946976.497873">946,976</td>
 </tr>
 <tr class="text-right">
@@ -14893,7 +14903,7 @@ SJCX
 <td data-format-market-cap data-format-value="652089.949506">652,090</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Apr 19, 2015</td>
+ <td class="text-left">Apr 19, 2015</td>
 <td data-format-fiat data-format-value="0.0167712997645">0.016771</td>
 <td data-format-fiat data-format-value="0.0167811997235">0.016781</td>
 <td data-format-fiat data-format-value="0.0158128999174">0.015813</td>
@@ -14901,7 +14911,6 @@ SJCX
 <td data-format-market-cap data-format-value="284.029998779">284</td>
 <td data-format-market-cap data-format-value="657596.422357">657,596</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Apr 18, 2015</td>
 <td data-format-fiat data-format-value="0.0178906004876">0.017891</td>
@@ -14952,7 +14961,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0169310998172">0.016931</td>
 <td data-format-fiat data-format-value="0.0182264000177">0.018226</td>
 <td data-format-fiat data-format-value="0.0156837999821">0.015684</td>
- <td data-format-fiat data-format-value="0.0164752006531">0.016475</td>
+<td data-format-fiat data-format-value="0.0164752006531">0.016475</td>
 <td data-format-market-cap data-format-value="827.317993164">827</td>
 <td data-format-market-cap data-format-value="683134.348781">683,134</td>
 </tr>
@@ -15044,7 +15053,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0170335005969">0.017034</td>
 <td data-format-fiat data-format-value="0.0173023995012">0.017302</td>
 <td data-format-market-cap data-format-value="162.531997681">163</td>
-<td data-format-market-cap data-format-value="717433.70377">717,434</td>
+ <td data-format-market-cap data-format-value="717433.70377">717,434</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 02, 2015</td>
@@ -15144,7 +15153,7 @@ SJCX
 <td data-format-fiat data-format-value="0.016573600471">0.016574</td>
 <td data-format-market-cap data-format-value="313.403991699">313</td>
 <td data-format-market-cap data-format-value="687214.446134">687,214</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Mar 22, 2015</td>
 <td data-format-fiat data-format-value="0.0171707998961">0.017171</td>
@@ -15203,7 +15212,7 @@ SJCX
 <td class="text-left">Mar 16, 2015</td>
 <td data-format-fiat data-format-value="0.0212859008461">0.021286</td>
 <td data-format-fiat data-format-value="0.0219161994755">0.021916</td>
- <td data-format-fiat data-format-value="0.0190935004503">0.019094</td>
+<td data-format-fiat data-format-value="0.0190935004503">0.019094</td>
 <td data-format-fiat data-format-value="0.0205131992698">0.020513</td>
 <td data-format-market-cap data-format-value="1629.95996094">1,630</td>
 <td data-format-market-cap data-format-value="850567.612133">850,568</td>
@@ -15245,7 +15254,7 @@ SJCX
 <td data-format-market-cap data-format-value="923797.896037">923,798</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Mar 11, 2015</td>
+ <td class="text-left">Mar 11, 2015</td>
 <td data-format-fiat data-format-value="0.0177919007838">0.017792</td>
 <td data-format-fiat data-format-value="0.0191133990884">0.019113</td>
 <td data-format-fiat data-format-value="0.017255499959">0.017255</td>
@@ -15253,7 +15262,7 @@ SJCX
 <td data-format-market-cap data-format-value="753.197998047">753</td>
 <td data-format-market-cap data-format-value="767257.331616">767,257</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Mar 10, 2015</td>
 <td data-format-fiat data-format-value="0.0176516994834">0.017652</td>
 <td data-format-fiat data-format-value="0.0190670005977">0.019067</td>
@@ -15395,7 +15404,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0228566993028">0.022857</td>
 <td data-format-fiat data-format-value="0.0232021007687">0.023202</td>
 <td data-format-market-cap data-format-value="2606.01000977">2,606</td>
-<td data-format-market-cap data-format-value="962061.248048">962,061</td>
+ <td data-format-market-cap data-format-value="962061.248048">962,061</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 22, 2015</td>
@@ -15503,7 +15512,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0223622005433">0.022362</td>
 <td data-format-fiat data-format-value="0.0237226001918">0.023723</td>
 <td data-format-market-cap data-format-value="1456.66003418">1,457</td>
- <td data-format-market-cap data-format-value="983643.47033">983,643</td>
+<td data-format-market-cap data-format-value="983643.47033">983,643</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 10, 2015</td>
@@ -15603,7 +15612,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0235556997359">0.023556</td>
 <td data-format-market-cap data-format-value="120.352996826">120</td>
 <td data-format-market-cap data-format-value="976723.061303">976,723</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jan 30, 2015</td>
 <td data-format-fiat data-format-value="0.0244379006326">0.024438</td>
@@ -15696,7 +15705,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 20, 2015</td>
-<td data-format-fiat data-format-value="0.0221140999347">0.022114</td>
+ <td data-format-fiat data-format-value="0.0221140999347">0.022114</td>
 <td data-format-fiat data-format-value="0.0241259001195">0.024126</td>
 <td data-format-fiat data-format-value="0.0211178008467">0.021118</td>
 <td data-format-fiat data-format-value="0.0228636004031">0.022864</td>
@@ -15704,7 +15713,7 @@ SJCX
 <td data-format-market-cap data-format-value="948025.547294">948,026</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Jan 19, 2015</td>
+<td class="text-left">Jan 19, 2015</td>
 <td data-format-fiat data-format-value="0.0207531005144">0.020753</td>
 <td data-format-fiat data-format-value="0.0221097003669">0.022110</td>
 <td data-format-fiat data-format-value="0.0199574008584">0.019957</td>
@@ -15796,7 +15805,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Jan 09, 2015</td>
 <td data-format-fiat data-format-value="0.0348747000098">0.034875</td>
-<td data-format-fiat data-format-value="0.0356790982187">0.035679</td>
+ <td data-format-fiat data-format-value="0.0356790982187">0.035679</td>
 <td data-format-fiat data-format-value="0.0295053999871">0.029505</td>
 <td data-format-fiat data-format-value="0.0303479991853">0.030348</td>
 <td data-format-market-cap data-format-value="14717.0996094">14,717</td>
@@ -15904,7 +15913,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Dec 28, 2014</td>
 <td data-format-fiat data-format-value="0.0449841991067">0.044984</td>
- <td data-format-fiat data-format-value="0.0515846982598">0.051585</td>
+<td data-format-fiat data-format-value="0.0515846982598">0.051585</td>
 <td data-format-fiat data-format-value="0.0423628985882">0.042363</td>
 <td data-format-fiat data-format-value="0.0515259988606">0.051526</td>
 <td data-format-market-cap data-format-value="6871.25976562">6,871</td>
@@ -15945,7 +15954,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0416068993509">0.041607</td>
 <td data-format-market-cap data-format-value="1195.95996094">1,196</td>
 <td data-format-market-cap data-format-value="1725205.31079">1,725,205</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Dec 23, 2014</td>
 <td data-format-fiat data-format-value="0.0402600988746">0.040260</td>
@@ -16053,7 +16062,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0564727000892">0.056473</td>
 <td data-format-market-cap data-format-value="20598.0996094">20,598</td>
 <td data-format-market-cap data-format-value="2341606.84777">2,341,607</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Dec 11, 2014</td>
 <td data-format-fiat data-format-value="0.0294620990753">0.029462</td>
@@ -16146,7 +16155,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Dec 01, 2014</td>
-<td data-format-fiat data-format-value="0.0468510985374">0.046851</td>
+ <td data-format-fiat data-format-value="0.0468510985374">0.046851</td>
 <td data-format-fiat data-format-value="0.0582439005375">0.058244</td>
 <td data-format-fiat data-format-value="0.0149633996189">0.014963</td>
 <td data-format-fiat data-format-value="0.0151819000021">0.015182</td>
@@ -16246,7 +16255,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Nov 20, 2014</td>
 <td data-format-fiat data-format-value="0.0152041995898">0.015204</td>
-<td data-format-fiat data-format-value="0.0152868004516">0.015287</td>
+ <td data-format-fiat data-format-value="0.0152868004516">0.015287</td>
 <td data-format-fiat data-format-value="0.0138509999961">0.013851</td>
 <td data-format-fiat data-format-value="0.0143264997751">0.014326</td>
 <td data-format-market-cap data-format-value="638.719970703">639</td>
@@ -16346,7 +16355,7 @@ SJCX
 <td class="text-left">Nov 09, 2014</td>
 <td data-format-fiat data-format-value="0.0143331000581">0.014333</td>
 <td data-format-fiat data-format-value="0.0153953004628">0.015395</td>
-<td data-format-fiat data-format-value="0.0136272003874">0.013627</td>
+ <td data-format-fiat data-format-value="0.0136272003874">0.013627</td>
 <td data-format-fiat data-format-value="0.0142593001947">0.014259</td>
 <td data-format-market-cap data-format-value="1479.59997559">1,480</td>
 <td data-format-market-cap data-format-value="591322.757804">591,323</td>
@@ -16396,6 +16405,7 @@ SJCX
 <td data-format-market-cap data-format-value="2129.31005859">2,129</td>
 <td data-format-market-cap data-format-value="581536.010149">581,536</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Nov 03, 2014</td>
 <td data-format-fiat data-format-value="0.0127638000995">0.012764</td>
@@ -16446,7 +16456,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0175784993917">0.017578</td>
 <td data-format-fiat data-format-value="0.0176164004952">0.017616</td>
 <td data-format-fiat data-format-value="0.0152048999444">0.015205</td>
-<td data-format-fiat data-format-value="0.0154874995351">0.015487</td>
+ <td data-format-fiat data-format-value="0.0154874995351">0.015487</td>
 <td data-format-market-cap data-format-value="1674.51000977">1,675</td>
 <td data-format-market-cap data-format-value="642255.314881">642,255</td>
 </tr>
@@ -16605,7 +16615,7 @@ SJCX
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 11, 2014</td>
- <td data-format-fiat data-format-value="0.0104446001351">0.010445</td>
+<td data-format-fiat data-format-value="0.0104446001351">0.010445</td>
 <td data-format-fiat data-format-value="0.0123231001198">0.012323</td>
 <td data-format-fiat data-format-value="0.0102637000382">0.010264</td>
 <td data-format-fiat data-format-value="0.011578399688">0.011578</td>
@@ -16705,7 +16715,7 @@ SJCX
 <tr class="text-right">
 <td class="text-left">Sep 30, 2014</td>
 <td data-format-fiat data-format-value="0.0109858000651">0.010986</td>
- <td data-format-fiat data-format-value="0.0113383000717">0.011338</td>
+<td data-format-fiat data-format-value="0.0113383000717">0.011338</td>
 <td data-format-fiat data-format-value="0.0105681996793">0.010568</td>
 <td data-format-fiat data-format-value="0.0112803997472">0.011280</td>
 <td data-format-market-cap data-format-value="650.250976562">650</td>
@@ -16805,7 +16815,7 @@ SJCX
 <td class="text-left">Sep 19, 2014</td>
 <td data-format-fiat data-format-value="0.0164394006133">0.016439</td>
 <td data-format-fiat data-format-value="0.0175969991833">0.017597</td>
- <td data-format-fiat data-format-value="0.015062299557">0.015062</td>
+<td data-format-fiat data-format-value="0.015062299557">0.015062</td>
 <td data-format-fiat data-format-value="0.015062299557">0.015062</td>
 <td data-format-market-cap data-format-value="3966.4699707">3,966</td>
 <td data-format-market-cap data-format-value="624622.581394">624,623</td>
@@ -16847,7 +16857,7 @@ SJCX
 <td data-format-market-cap data-format-value="956874.370439">956,874</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Sep 14, 2014</td>
+ <td class="text-left">Sep 14, 2014</td>
 <td data-format-fiat data-format-value="0.0179094001651">0.017909</td>
 <td data-format-fiat data-format-value="0.0206640008837">0.020664</td>
 <td data-format-fiat data-format-value="0.0174406003207">0.017441</td>
@@ -16855,7 +16865,7 @@ SJCX
 <td data-format-market-cap data-format-value="2627.65991211">2,628</td>
 <td data-format-market-cap data-format-value="809183.303224">809,183</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Sep 13, 2014</td>
 <td data-format-fiat data-format-value="0.0189804006368">0.018980</td>
 <td data-format-fiat data-format-value="0.0249671004713">0.024967</td>
@@ -16897,7 +16907,7 @@ SJCX
 <td data-format-fiat data-format-value="0.0160514004529">0.016051</td>
 <td data-format-fiat data-format-value="0.0131676001474">0.013168</td>
 <td data-format-fiat data-format-value="0.014519199729">0.014519</td>
-<td data-format-market-cap data-format-value="9397.16015625">9,397</td>
+ <td data-format-market-cap data-format-value="9397.16015625">9,397</td>
 <td data-format-market-cap data-format-value="573062.308121">573,062</td>
 </tr>
 <tr class="text-right">
@@ -17005,7 +17015,7 @@ SJCX
 <td data-format-fiat data-format-value="0.011580100283">0.011580</td>
 <td data-format-fiat data-format-value="0.0100467996672">0.010047</td>
 <td data-format-fiat data-format-value="0.0109687997028">0.010969</td>
- <td data-format-market-cap data-format-value="902.317993164">902</td>
+<td data-format-market-cap data-format-value="902.317993164">902</td>
 <td data-format-market-cap data-format-value="432930.591583">432,931</td>
 </tr>
 <tr class="text-right">
@@ -17103,21 +17113,15 @@ with
 SJCX
 in circulation.
 The last known price of Storjcoin X is
-<span data-currency-price data-usd="0.138546036864">
-<span data-currency-value>0.138546</span>
+<span data-currency-price data-usd="0.126847578665">
+<span data-currency-value>0.126848</span>
 <span data-currency-code>USD</span>
 </span>
 and is
 up
-<span data-format-percentage data-format-value="0.260315">0.26</span>%
+<span data-format-percentage data-format-value="0.00872807">0.01</span>%
 over the last 24 hours.
-It is currently trading on 1 active market(s)
-with
-<span data-currency-volume data-usd="13.8546036864">
-<span data-currency-value>14</span>
-<span data-currency-code>USD</span>
-</span>
-traded over the last 24 hours.
+It is currently trading on 1 active market(s).
 More information can be found at <a href="http://storj.io" target="_blank" rel="nofollow noopener">http://storj.io</a>.
 <div class="visible-xs bottom-margin-1x"></div>
 </div>
@@ -17130,8 +17134,8 @@ More information can be found at <a href="http://storj.io" target="_blank" rel="
 Storjcoin X Price
 </th>
 <td>
-<span data-currency-price data-usd="0.138546036864">
-<span data-currency-value>0.138546</span>
+<span data-currency-price data-usd="0.126847578665">
+<span data-currency-value>0.126848</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17144,7 +17148,7 @@ Storjcoin X ROI
 </a>
 </th>
 <td>
-<span class="text-semi-bold positive_change "><span data-format-percentage data-format-value="1186.29"> +1186.29</span>%
+<span class="text-semi-bold positive_change "><span data-format-percentage data-format-value="1077.68"> +1077.68</span>%
 </td>
 </tr>
 <tr>
@@ -17152,7 +17156,7 @@ Storjcoin X ROI
 Market Rank
 </th>
 <td>
-#2085
+#2163
 </td>
 </tr>
 <tr>
@@ -17168,10 +17172,7 @@ No Data
 24 Hour Volume
 </th>
 <td>
-<span data-currency-volume data-usd="13.8546036864">
-<span data-currency-value>14</span>
-<span data-currency-code>USD</span>
-</span>
+No Data
 </td>
 </tr>
 <tr>
@@ -17264,13 +17265,13 @@ All Time Low
 30 Day High / Low
 </th>
 <td>
- <span data-currency-price data-usd="0.139615422971">
+<span data-currency-price data-usd="0.139615422971">
 <span data-currency-value>0.139615</span>
 <span data-currency-code>USD</span>
 </span>
 / <br>
-<span data-currency-price data-usd="0.12528277911">
-<span data-currency-value>0.125283</span>
+<span data-currency-price data-usd="0.125602655542">
+<span data-currency-value>0.125603</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17280,13 +17281,13 @@ All Time Low
 7 Day High / Low
 </th>
 <td>
-<span data-currency-price data-usd="0.139145110396">
-<span data-currency-value>0.139145</span>
+<span data-currency-price data-usd="0.139597236858">
+<span data-currency-value>0.139597</span>
 <span data-currency-code>USD</span>
 </span>
 / <br>
-<span data-currency-price data-usd="0.127159764304">
-<span data-currency-value>0.127160</span>
+<span data-currency-price data-usd="0.126776282921">
+<span data-currency-value>0.126776</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17296,13 +17297,13 @@ All Time Low
 24 Hour High / Low
 </th>
 <td>
-<span data-currency-price data-usd="0.138747420997">
-<span data-currency-value>0.138747</span>
+<span data-currency-price data-usd="0.126847878401">
+<span data-currency-value>0.126848</span>
 <span data-currency-code>USD</span>
 </span>
 / <br>
-<span data-currency-price data-usd="0.138035920532">
-<span data-currency-value>0.138036</span>
+<span data-currency-price data-usd="0.126836508287">
+<span data-currency-value>0.126837</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17312,13 +17313,13 @@ All Time Low
 Yesterday's High / Low
 </th>
 <td>
-<span class="whitespace-nowrap" data-currency-price data-usd="0.138747420997">
-<span data-currency-value>0.138747</span>
+<span class="whitespace-nowrap" data-currency-price data-usd="0.126870229008">
+<span data-currency-value>0.126870</span>
 <span data-currency-code>USD</span>
 </span>
 / <br>
-<span class="whitespace-nowrap" data-currency-price data-usd="0.138035920532">
-<span data-currency-value>0.138036</span>
+<span class="whitespace-nowrap" data-currency-price data-usd="0.126836508287">
+<span data-currency-value>0.126837</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17328,13 +17329,13 @@ Yesterday's High / Low
 Yesterday's Open / Close
 </th>
 <td>
-<span class="whitespace-nowrap" data-currency-price data-usd="0.138161264999">
-<span data-currency-value>0.138161</span>
+<span class="whitespace-nowrap" data-currency-price data-usd="0.126847578665">
+<span data-currency-value>0.126848</span>
 <span data-currency-code>USD</span>
 </span>
 / <br>
-<span class="whitespace-nowrap" data-currency-price data-usd="0.138599394524">
-<span data-currency-value>0.138599</span>
+<span class="whitespace-nowrap" data-currency-price data-usd="0.126836508287">
+<span data-currency-value>0.126837</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17344,12 +17345,12 @@ Yesterday's Open / Close
 Yesterday's Change
 </th>
 <td>
-<span class="text-semi-bold positive_change ">
-<span class="whitespace-nowrap" data-currency-price data-usd="0.000438129525">
-<span data-currency-value>$0.000438</span>
+<span class="text-semi-bold negative_change">
+<span class="whitespace-nowrap" data-currency-price data-usd="-1.1070378e-05">
+<span data-currency-value>$-0.000011</span>
 <span data-currency-code>USD</span>
 </span>
-(<span data-format-percentage data-format-value="0.317114587076">+0.32</span>%)
+ (<span data-format-percentage data-format-value="-0.00872730730575">-0.01</span>%)
 </span>
 </td>
 </tr>
@@ -17358,8 +17359,8 @@ Yesterday's Change
 Yesterday's Volume
 </th>
 <td>
-<span class="whitespace-nowrap" data-currency-price data-usd="13.8599394524">
-<span data-currency-value>$14</span>
+<span class="whitespace-nowrap" data-currency-price data-usd="56.6959192042">
+<span data-currency-value>$57</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -17460,24 +17461,24 @@ The approximate return on investment if purchased at the time of launch (or earl
 <h3 class="related-links-panel__header h5">Related Cryptocurrencies</h3>
 <ul class="related-links-panel__list">
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3068.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="BitcoiNote" />
-<a href="/currencies/bitcoinote/" class="link-secondary">BitcoiNote (BTCN)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/2970.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="LocalCoinSwap" />
+<a href="/currencies/local-coin-swap/" class="link-secondary">LocalCoinSwap (LCS)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1581.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Honey" />
-<a href="/currencies/honey/" class="link-secondary">Honey (HONEY)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3503.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="CommunityGeneration" />
+<a href="/currencies/communitygeneration/" class="link-secondary">CommunityGeneration (CGEN)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/2384.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Vezt" />
-<a href="/currencies/vezt/" class="link-secondary">Vezt (VZT)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3478.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="BitMoney" />
+<a href="/currencies/bitmoney/" class="link-secondary">BitMoney (BIT)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3611.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Noir" />
-<a href="/currencies/noir/" class="link-secondary">Noir (NOR)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1686.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="EquiTrader" />
+<a href="/currencies/equitrader/" class="link-secondary">EquiTrader (EQT)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1980.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Elixir" />
-<a href="/currencies/elixir/" class="link-secondary">Elixir (ELIX)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3169.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Hybrid Block" />
+<a href="/currencies/hybrid-block/" class="link-secondary">Hybrid Block (HYB)</a>
 </li>
 </ul>
 </section>
@@ -17500,6 +17501,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 <ul class="list-unstyled">
 <li><a href="/advertising/" target="_blank">Advertise</a></li>
 <li><a href="/api/" target="_blank">Crypto API</a></li>
+<li><a href="/indices/" target="_blank">Crypto Indices</a></li>
 <li><a href="/disclaimer/">Disclaimer</a></li>
 <li><a href="/privacy/">Privacy</a></li>
 <li><a href="/terms/">Terms</a></li>
@@ -17563,7 +17565,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 We use cookies to offer you a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Read about how we use cookies and how you can control them on our <a href="/privacy/">Privacy Policy</a>. If you continue to use this site, you consent to our use of cookies.
 </div>
 </div>
-<div id="currency-exchange-rates" data-pkr="0.00705266295365" data-all="0.00901945280405" data-ron="0.236740742845" data-mnt="0.000398005297587" data-ugx="0.000266593438283" data-ttd="0.147574727415" data-aud="0.712706052229" data-cup="0.0388349514563" data-ngn="0.00277862680263" data-byn="0.470004986753" data-gtq="0.130578936077" data-hrk="0.151595933773" data-clp="0.00150434999726" data-eur="1.12665011993" data-nok="0.116844201694" data-amd="0.00205538269365" data-mxn="0.0528787173738" data-gel="0.371747211896" data-try="0.175874734979" data-crc="0.00165111144939" data-aed="0.272243594857" data-gbp="1.30531262237" data-bam="0.576033548194" data-ars="0.0230435984883" data-mdl="0.0572946815009" data-btc="5198.21169125" data-sek="0.108033500756" data-mur="0.0287028466048" data-irr="2.37501484384e-05" data-cny="0.148994281153" data-bdt="0.0118432326454" data-pen="0.303999139074" data-kzt="0.00263057323768" data-rub="0.0154050211126" data-omr="2.5970855506" data-mkd="0.0183327608012" data-jod="1.41043524621" data-mmk="0.000663904386684" data-pln="0.262912279318" data-kes="0.00990982063225" data-hkd="0.127517677138" data-ves="0.000302800366892" data-cop="0.000320670026629" data-dzd="0.00838165033455" data-idr="7.06563979368e-05" data-krw="0.000876508690584" data-bgn="0.57647686166" data-isk="0.0084104377738" data-ils="0.279275002095" data-bob="0.144560770891" data-dkk="0.150897523379" data-twd="0.0324328871941" data-kwd="3.28441741004" data-brl="0.259760500818" data-zar="0.0709905848737" data-sgd="0.738903334449" data-uzs="0.000118194861554" data-usd="1.0" data-chf="1.0001500225" data-xau="1304.03599139" data-xpd="1387.53989177" data-xag="15.2244726699" data-huf="0.00349485382774" data-bmd="1.0" data-rsd="0.0095508100276" data-jmd="0.00774854814485" data-azn="0.587371512482" data-uah="0.0374194149512" data-lkr="0.0057152317321" data-tnd="0.331251747353" data-nzd="0.675004775659" data-iqd="0.00083717710574" data-xpt="887.49256725" data-cad="0.750156595189" data-lbp="0.000662109993907" data-khr="0.00024659286297" data-myr="0.244049880867" data-bhd="2.65196417727" data-inr="0.0144361596928" data-jpy="0.00899655431943" data-czk="0.0439508876959" data-sar="0.266634670506" data-ltc="87.1808045344" data-nad="0.0711999585331" data-qar="0.27464363615" data-pab="1.0" data-xrp="0.349248747742" data-vnd="4.30539460346e-05" data-uyu="0.0295834575222" data-nio="0.0303979326488" data-kgs="0.0145542982663" data-ssp="0.00767675340886" data-mad="0.103793022597" data-php="0.0191994995228" data-eth="175.946483403" data-npr="0.00900414458074" data-bch="297.002066812" data-ghs="0.194152703042" data-egp="0.0576967459035" data-hnl="0.0408732922219" data-dop="0.0197663854391" data-thb="0.0314742540602"></div>
+<div id="currency-exchange-rates" data-pkr="0.00706234629421" data-all="0.00916850615934" data-ron="0.237479431313" data-mnt="0.000398724082935" data-ugx="0.000267534112209" data-ttd="0.14776939876" data-aud="0.716948666475" data-cup="0.0388349514563" data-ngn="0.00277777777778" data-byn="0.475387298032" data-gtq="0.131004835913" data-hrk="0.152258982785" data-clp="0.00151264986501" data-eur="1.13195159775" data-nok="0.117796729963" data-amd="0.00206004619349" data-mxn="0.0533145666059" data-gel="0.371057513915" data-try="0.173148390075" data-crc="0.00166274507963" data-aed="0.272249820792" data-gbp="1.30787339786" data-bam="0.578767676288" data-ars="0.0237569192027" data-mdl="0.0566091140674" data-btc="5122.0813992" data-sek="0.107883011662" data-mur="0.0287357089776" data-irr="2.37501484384e-05" data-cny="0.149160072176" data-bdt="0.0118978547751" data-pen="0.303796976126" data-kzt="0.00263665783728" data-rub="0.0155452093551" data-omr="2.5974025974" data-mkd="0.0183975715206" data-jod="1.41143260409" data-mmk="0.000659565989841" data-pln="0.26402640264" data-kes="0.00990099009901" data-hkd="0.127504344711" data-ves="0.000302250800323" data-cop="0.000320641282565" data-dzd="0.00840179204511" data-idr="7.09995314031e-05" data-krw="0.000881274675691" data-bgn="0.576711246446" data-isk="0.00836119751178" data-ils="0.280559997756" data-bob="0.144799902463" data-dkk="0.151367224455" data-twd="0.0324191143098" data-kwd="3.29372085057" data-brl="0.257605811587" data-zar="0.0716573631524" data-sgd="0.739155116136" data-uzs="0.000118423941432" data-usd="1.0" data-chf="0.997954193902" data-xau="1290.5057492" data-xpd="1370.61403509" data-xag="14.9794983096" data-huf="0.00351506204085" data-bmd="1.0" data-rsd="0.00958956655159" data-jmd="0.0077483285848" data-azn="0.587371512482" data-uah="0.0374348852926" data-lkr="0.00573052293818" data-tnd="0.331949987087" data-nzd="0.676199730467" data-iqd="0.000838557527161" data-xpt="891.49601947" data-cad="0.75005981727" data-lbp="0.000663507016177" data-khr="0.000247593319707" data-myr="0.243044905463" data-bhd="2.65717170644" data-inr="0.0144569255902" data-jpy="0.00892659998179" data-czk="0.044113884404" data-sar="0.267125410038" data-ltc="78.9637640915" data-nad="0.0716333301862" data-qar="0.27478566718" data-pab="1.0" data-xrp="0.326468433727" data-vnd="4.31284516239e-05" data-uyu="0.0292936895973" data-nio="0.0304719910295" data-kgs="0.0145547729875" data-ssp="0.00767675340886" data-mad="0.104287063909" data-php="0.0193461017605" data-eth="164.844714674" data-npr="0.00902737418519" data-bch="281.294563796" data-ghs="0.191496117033" data-egp="0.057873719544" data-hnl="0.0409341131882" data-dop="0.0197992784787" data-thb="0.0315419692238"></div>
 <div class="scroll-to-top">
 <button class="btn"><span class="glyphicons glyphicons-chevron-up"></span></button>
 </div>
