@@ -5,6 +5,9 @@ from coinbot.items import CoinItem
 
 class CoinParseSpider(scrapy.Spider):
     name = "coin_parse"
+     custom_settings = {
+        'CONCURRENT_REQUESTS' : '100',
+    }
 
     def start_requests(self):
         path = 'D:/Users/Alex/Git_Repositories/coinbot/html_files/'
