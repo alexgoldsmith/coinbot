@@ -14,13 +14,13 @@ https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html
 
 ## User Guide
 
-To download the html files required for dataset construction, navigate to the coinbot directory and run the following code:
+To download the html files required for dataset construction, navigate to the coinbot directory and enter the following command:
 
 ```
 scrapy crawl coin_request
 ```
 
-To recreate the dataset used for the analysis, run the following code from the coinbot directory after downloading the required html files (note: in order to run properly, the file path to access the html files must be editted in coin_parse.py)
+To recreate the dataset used for the analysis, enter the following command from the coinbot directory after downloading the required html files (note: in order to run properly, the file path to access the html files must be editted in coin_parse.py)
 
 ```
 scrapy crawl coin_parse
