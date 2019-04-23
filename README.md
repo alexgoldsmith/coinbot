@@ -4,13 +4,10 @@ This repository contains code for scraping historical data from coinmarketcap.co
 
 ## Prerequisites
 
-This project requires both Scrapy and JupyterLab.
+This project requires both Scrapy for scraping and parsing.
 
 Installation instructions for Scrapy: 
 http://doc.scrapy.org/en/latest/intro/install.html
-
-Installation instructions for JupyterLab
-https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html
 
 ## User Guide
 
