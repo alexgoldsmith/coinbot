@@ -26,4 +26,4 @@ To recreate the dataset used for the analysis, enter the following command from 
 scrapy crawl coin_parse
 ```
 
-If you wish to skip straight to the analysis, all necessary files are included in the repository. Simply open up crypto_notebook.ipynb and run all cells!
+If you wish to skip straight to the analysis, all necessary files are included in the repository. Simply open up crypto_notebook.ipynb and run all cells! An html version is included in the repository as well.
